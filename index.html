@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariia Sokolova — Online Course Creator &amp; Instructional Designer</title>
+<meta name="description" content="Instructional designer and online course creator. Case studies, a working demo, and a résumé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF8;
+    --card:#FFFFFF;
+    --ink:#14171A;
+    --muted:#666B72;
+    --line:#E7E4DC;
+    --accent:#2E6E5E;
+    --accent-soft:#E4EEEA;
+    --accent-ink:#FFFFFF;
+    --warn:#9C5A2E;
+    --warn-soft:#F3E7DA;
+    --r-lg:18px;
+    --r-md:12px;
+    --r-pill:999px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    max-width:100vw;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  button{font:inherit; color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 40px;}
+  section{padding:88px 0;}
+  .eyebrow{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:inline-block;
+    margin-bottom:14px;
+  }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,250,248,.82);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:0 40px;
+    height:68px; display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px; }
+  .logo-mark{
+    width:32px; height:32px; border-radius:9px; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
+    flex-shrink:0;
+  }
+  .nav-links{ display:flex; align-items:center; gap:30px; }
+  .nav-links a{
+    font-size:14.5px; font-weight:500; text-decoration:none; color:var(--ink);
+    padding:6px 0; border-bottom:2px solid transparent; transition:border-color .15s ease, color .15s ease;
+  }
+  .nav-links a:hover, .nav-links a.active{ border-color:var(--accent); color:var(--accent); }
+  .nav-cta{ display:flex; align-items:center; gap:10px; }
+  .burger{ display:none; width:38px; height:38px; border:1.5px solid var(--ink); border-radius:var(--r-md); background:var(--card); cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
+  .burger span{ width:16px; height:2px; background:var(--ink); display:block; }
+  .mobile-panel{ display:none; }
+
+  /* ---------- Buttons (flat, hard-offset shadow) ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:14.5px;
+    padding:12px 22px; border-radius:var(--r-pill);
+    border:1.5px solid var(--ink);
+    text-decoration:none; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 0 0 var(--ink);
+  }
+  .btn:hover{ transform:translate(-2px,-2px); box-shadow:3px 3px 0 var(--ink); }
+  .btn-fill{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+  .btn-fill:hover{ box-shadow:3px 3px 0 var(--ink); }
+  .btn-ghost{ background:var(--card); color:var(--ink); }
+  .btn-sm{ padding:9px 16px; font-size:13.5px; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:96px 0 72px; position:relative; overflow:hidden; }
+  .hero-shape{ position:absolute; pointer-events:none; }
+  .hero-shape.circle{ width:120px; height:120px; border:2px solid var(--line); border-radius:50%; top:30px; right:60px; }
+  .hero-shape.dot{ width:14px; height:14px; background:var(--accent); border-radius:50%; top:210px; right:130px; }
+  .kicker{ display:flex; align-items:center; gap:9px; margin-bottom:22px; font-size:13.5px; color:var(--muted); font-weight:500; }
+  .kicker .pulse{ width:8px; height:8px; border-radius:50%; background:var(--accent); position:relative; flex-shrink:0; }
+  .kicker .pulse::after{
+    content:''; position:absolute; inset:-4px; border-radius:50%; border:1.5px solid var(--accent);
+    animation:pulseRing 2s ease-out infinite;
+  }
+  @keyframes pulseRing{0%{transform:scale(.6); opacity:.8;} 100%{transform:scale(1.8); opacity:0;}}
+  h1.hero-h{
+    font-size:52px; line-height:1.08; max-width:760px; margin-bottom:22px;
+  }
+  h1.hero-h .accent-word{ color:var(--accent); }
+  .hero-lede{ font-size:18px; color:#3A3E43; max-width:600px; margin-bottom:34px; }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px; }
+  .hero-contacts{ display:flex; flex-wrap:wrap; gap:8px 10px; }
+  .chip{
+    font-size:13px; font-weight:500; color:var(--ink); background:var(--card);
+    border:1.5px solid var(--line); border-radius:var(--r-pill); padding:7px 14px;
+    text-decoration:none; transition:border-color .15s ease, transform .15s ease;
+  }
+  .chip:hover{ border-color:var(--ink); transform:translateY(-1px); }
+
+  /* ---------- Stats ---------- */
+  .stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px; }
+  .stat{
+    background:var(--card); border:1.5px solid var(--ink); border-radius:var(--r-lg);
+    padding:24px 22px; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .stat:hover{ transform:translate(-3px,-3px); box-shadow:4px 4px 0 var(--accent); }
+  .stat .n{ font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; color:var(--accent); }
+  .stat .l{ font-size:13px; color:var(--muted); margin-top:6px; }
+
+  /* ---------- Section headers ---------- */
+  h2.h2{ font-size:32px; line-height:1.15; margin-bottom:14px; max-width:640px; }
+  .section-lede{ font-size:16.5px; color:#3A3E43; max-width:580px; margin-bottom:40px; }
+
+  /* ---------- Skills ---------- */
+  .skills{ display:flex; flex-wrap:wrap; gap:10px; margin-top:36px; }
+  .skill{
+    font-size:13.5px; font-weight:500; padding:9px 16px;
+    background:var(--card); border:1.5px solid var(--line); border-radius:var(--r-pill);
+    transition:border-color .15s ease, background .15s ease, transform .15s ease;
+  }
+  .skill:hover{ border-color:var(--accent); background:var(--accent-soft); transform:translateY(-1px); }
+
+  /* ---------- Courses ---------- */
+  #courses{ background:var(--card); border-top:1.5px solid var(--line); border-bottom:1.5px solid var(--line); }
+  .course-grid{ display:flex; flex-direction:column; gap:16px; }
+  .course{
+    border:1.5px solid var(--ink); border-radius:var(--r-lg); background:var(--paper);
+    overflow:hidden; transition:box-shadow .18s ease, transform .18s ease;
+  }
+  .course:hover{ box-shadow:5px 5px 0 var(--accent); transform:translate(-2px,-2px); }
+  .course-head{
+    padding:22px 24px; cursor:pointer; display:flex; align-items:flex-start; gap:16px;
+  }
+  .course-icon{
+    width:44px; height:44px; flex-shrink:0; border-radius:var(--r-md);
+    background:var(--accent-soft); border:1.5px solid var(--ink);
+    display:flex; align-items:center; justify-content:center; color:var(--accent);
+  }
+  .course-icon svg{ width:22px; height:22px; }
+  .course-head-main{ flex:1; min-width:0; }
+  .course-tag{
+    font-size:11.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); display:block; margin-bottom:6px;
+  }
+  .course-title{ font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; line-height:1.3; }
+  .course-toggle{
+    width:30px; height:30px; border-radius:50%; border:1.5px solid var(--ink);
+    display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;
+    transition:transform .25s ease, background .15s ease;
+  }
+  .course.open .course-toggle{ transform:rotate(45deg); background:var(--ink); color:var(--paper); }
+  .course-body{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .course.open .course-body{ max-height:1600px; }
+  .course-body-inner{ padding:0 24px 26px 84px; }
+  .course-meta{ display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:var(--muted); font-weight:500; margin-bottom:16px; padding-top:16px; border-top:1px solid var(--line); }
+  .course-h4{ font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin:16px 0 7px; }
+  .course-h4:first-of-type{ margin-top:0; }
+  .course-body-inner p{ font-size:14.5px; color:#3A3E43; margin-bottom:8px; }
+  .course-stats{ display:flex; gap:26px; flex-wrap:wrap; margin-top:16px; padding-top:16px; border-top:1px solid var(--line); }
+  .course-stats .n{ font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:var(--accent); }
+  .course-stats .l{ font-size:11.5px; color:var(--muted); }
+  .course-demo-link{
+    display:inline-flex; align-items:center; gap:6px; margin-top:16px;
+    padding:9px 15px; border:1.5px solid var(--accent); color:var(--accent);
+    font-size:13px; font-weight:600; background:var(--accent-soft);
+    cursor:pointer; border-radius:var(--r-pill); transition:background .15s ease, color .15s ease;
+  }
+  .course-demo-link:hover{ background:var(--accent); color:var(--accent-ink); }
+
+  @media (max-width:700px){ .course-body-inner{ padding-left:24px; } }
+
+  /* ---------- Demo player ---------- */
+  .player{ border:1.5px solid var(--ink); border-radius:var(--r-lg); background:var(--card); overflow:hidden; margin-bottom:16px; }
+  .player-chrome{ display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:var(--paper); border-bottom:1.5px solid var(--ink); }
+  .player-label{ font-family:'Space Grotesk',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
+  .player-steps{ display:flex; gap:5px; }
+  .player-step{ width:22px; height:5px; border-radius:3px; background:var(--line); transition:background .25s ease; }
+  .player-step.done{ background:var(--accent); }
+  .player-body{ padding:34px 32px; min-height:280px; display:flex; flex-direction:column; }
+  .player-eyebrow{ font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:16px; }
+  .player-prompt{ font-size:18px; line-height:1.5; margin-bottom:28px; max-width:540px; }
+  .player-prompt .voice{ color:var(--muted); font-style:italic; }
+  .player-choices{ display:flex; flex-direction:column; gap:10px; margin-top:auto; }
+  .player-choice{
+    text-align:left; padding:15px 18px; border:1.5px solid var(--line); background:var(--card);
+    font-size:14.5px; font-weight:500; cursor:pointer; border-radius:var(--r-md);
+    transition:border-color .15s ease, background .15s ease, transform .15s ease;
+  }
+  .player-choice:hover{ border-color:var(--accent); background:var(--accent-soft); transform:translateX(3px); }
+  .feedback-panel{
+    padding:18px 20px; border:1.5px solid var(--warn); background:var(--warn-soft);
+    font-size:14px; color:#4a3420; margin-bottom:20px; border-radius:var(--r-md);
+  }
+  .feedback-panel.good{ border-color:var(--accent); background:var(--accent-soft); color:#1c3a32; }
+  .feedback-panel .fk{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:7px; opacity:.75; }
+  .player-btn-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .demo-note{ font-size:13.5px; color:var(--muted); }
+
+  /* ---------- Experience / Education ---------- */
+  .role-block{
+    display:grid; grid-template-columns:160px 1fr; gap:24px;
+    padding:26px 0; border-top:1px solid var(--line);
+  }
+  .role-block:last-child{ border-bottom:1px solid var(--line); }
+  .role-dates{ font-size:13px; color:var(--muted); font-weight:500; padding-top:3px; }
+  .role-title{ font-family:'Space Grotesk',sans-serif; font-size:17.5px; font-weight:600; margin-bottom:3px; }
+  .role-org{ font-size:14px; color:var(--muted); margin-bottom:12px; }
+  .role-block ul{ padding-left:18px; font-size:14.5px; color:#3A3E43; }
+  .role-block li{ margin-bottom:6px; }
+  h3.section-h{
+    font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--muted); margin:48px 0 6px;
+  }
+  h3.section-h:first-of-type{ margin-top:0; }
+
+  /* ---------- Contact ---------- */
+  #contact{ background:var(--ink); color:var(--paper); }
+  #contact .eyebrow{ color:#8FD8C0; }
+  #contact h2.h2{ color:var(--paper); }
+  #contact .section-lede{ color:#B8BBBF; }
+  .contact-links{ display:flex; flex-direction:column; gap:14px; max-width:480px; margin-top:12px; }
+  .contact-links a{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 20px; border:1.5px solid #33383D; border-radius:var(--r-lg);
+    font-size:15px; font-weight:500; text-decoration:none; color:var(--paper);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .contact-links a:hover{ border-color:var(--accent); transform:translate(-2px,-2px); }
+  .contact-links .k{
+    color:#8FD8C0; font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:600;
+    min-width:70px; text-align:right;
+  }
+
+  footer.site-foot{
+    padding:28px 0; text-align:center; font-size:13px; color:var(--muted);
+  }
+  footer.site-foot a{ color:var(--ink); border-bottom:1px solid var(--line); }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:780px){
+    .wrap{ padding:0 20px; }
+    .nav-inner{ padding:0 20px; }
+    .nav-links{ display:none; }
+    .nav-cta .btn-ghost{ display:none; }
+    .burger{ display:flex; }
+    .mobile-panel.open{
+      display:flex; flex-direction:column; gap:2px; padding:10px 20px 16px;
+      border-bottom:1.5px solid var(--line); background:var(--paper);
+    }
+    .mobile-panel a{
+      padding:12px 4px; font-weight:500; text-decoration:none; color:var(--ink);
+      border-bottom:1px solid var(--line);
+    }
+    section{ padding:56px 0; }
+    .hero{ padding:48px 0 40px; }
+    .hero-shape{ display:none; }
+    h1.hero-h{ font-size:34px; }
+    h2.h2{ font-size:26px; }
+    .stat-row{ grid-template-columns:1fr; }
+    .role-block{ grid-template-columns:1fr; gap:6px; }
+    .course-head{ padding:18px; }
+    .course-body-inner{ padding:0 18px 22px; }
+    .player-body{ padding:24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="logo-mark">MS</span>Mariia Sokolova</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#courses">Courses</a>
+      <a href="#demo">Demo</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost btn-sm" download>Résumé</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobile-panel">
+    <a href="#overview">Overview</a>
+    <a href="#courses">Courses</a>
+    <a href="#demo">Demo</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+    <a href="Mariia_Sokolova_CV.pdf" download>Download résumé</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- OVERVIEW -->
+  <section class="hero" id="overview">
+    <div class="wrap">
+      <span class="hero-shape circle"></span>
+      <span class="hero-shape dot"></span>
+      <div class="kicker"><span class="pulse"></span>Open to new roles — remote &amp; relocation</div>
+      <h1 class="hero-h">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</h1>
+      <p class="hero-lede">Five years in learning &amp; development, the last two and a half running L&amp;D end to end for a B2B distributor — needs analysis, course design, production, and LMS administration. English C1, native Russian.</p>
+      <div class="hero-actions">
+        <a href="#courses" class="btn btn-fill">See my courses</a>
+        <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost" download>Download résumé</a>
+      </div>
+      <div class="hero-contacts">
+        <a class="chip" href="mailto:maria.b.sokolova@gmail.com">maria.b.sokolova@gmail.com</a>
+        <a class="chip" href="tel:+79775714370">+7 977 571 43 70</a>
+        <a class="chip" href="https://linkedin.com/in/maria-sokolova-349002230" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <div class="stat-row" style="margin-top:52px;">
+        <div class="stat"><div class="n">188</div><div class="l">reps trained on flagship course, NPS 70.2</div></div>
+        <div class="stat"><div class="n">35+</div><div class="l">e-learning assets shipped solo</div></div>
+        <div class="stat"><div class="n">2.5 yrs</div><div class="l">running L&amp;D as sole specialist</div></div>
+      </div>
+
+      <div class="skills">
+        <span class="skill">Instructional Design (ADDIE)</span>
+        <span class="skill">Online Course Development</span>
+        <span class="skill">iSpring Suite</span>
+        <span class="skill">SCORM</span>
+        <span class="skill">LMS Administration</span>
+        <span class="skill">Learning Analytics</span>
+        <span class="skill">Assessment Design</span>
+        <span class="skill">Branching Scenarios</span>
+        <span class="skill">Staff Training &amp; Facilitation</span>
+        <span class="skill">Curriculum Design</span>
+        <span class="skill">PowerPoint &amp; Canva</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses">
+    <div class="wrap">
+      <span class="eyebrow">Courses I've Built</span>
+      <h2 class="h2">Six courses, six different problems</h2>
+      <p class="section-lede">Each one below includes what didn't work — that's usually the more useful part to a hiring manager than the win.</p>
+
+      <div class="course-grid">
+
+        <div class="course open" id="case-odk">
+          <div class="course-head" onclick="toggleCase('case-odk')">
+            <div class="course-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5.5h16v10.5H9.5L5.5 19v-3H4z" stroke-linejoin="round"/><path d="M8 9.5h8M8 12.5h5"/></svg>
+            </div>
+            <div class="course-head-main">
+              <span class="course-tag">Branching Dialogue Scenario</span>
+              <div class="course-title">ODK — Teaching Product Knowledge Through a Real Sales Call</div>
+            </div>
+            <span class="course-toggle">+</span>
+          </div>
+          <div class="course-body">
+            <div class="course-body-inner">
+              <div class="course-meta"><span>iSpring Suite</span><span>Dialogue simulation</span><span>75 completions</span><span>~3 min read</span></div>
+              <div class="course-h4">The Challenge</div>
+              <p>Most reps already knew the product facts. What they needed practice with was handling client objections and calculating cost on the spot.</p>
+              <div class="course-h4">Design Decisions</div>
+              <p>Built as a scripted conversation between the company's travelling manager and a bar owner. Cost math appears inside the conversation, at the point a rep would actually need it — not as a separate reference table.</p>
+              <div class="course-h4">Outcome</div>
+              <p>100% of respondents rated it clear or very clear. The most useful feedback: the simulated client agrees too easily — a "difficult client" branch is the clear next iteration.</p>
+              <div class="course-stats">
+                <div><div class="n">70.7</div><div class="l">NPS</div></div>
+                <div><div class="n">100%</div><div class="l">rated clear</div></div>
+                <div><div class="n">75</div><div class="l">reps surveyed</div></div>
+              </div>
+              <div class="course-demo-link" onclick="event.stopPropagation(); goToDemo();">▶ Try a mini version of this scenario</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="course" id="case-code">
+          <div class="course-head" onclick="toggleCase('case-code')">
+            <div class="course-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2"/><path d="M12 3.5v3M12 17.5v3M20.5 12h-3M6.5 12h-3M17.9 6.1l-2.1 2.1M8.2 15.8l-2.1 2.1M17.9 17.9l-2.1-2.1M8.2 8.2 6.1 6.1"/></svg>
+            </div>
+            <div class="course-head-main">
+              <span class="course-tag">Interactive Storybook Course</span>
+              <div class="course-title">C.O.D.E. — Turning a Crowded Category Into a Story</div>
+            </div>
+            <span class="course-toggle">+</span>
+          </div>
+          <div class="course-body">
+            <div class="course-body-inner">
+              <div class="course-meta"><span>iSpring Suite</span><span>Storybook / pirate format</span><span>188 completions</span><span>~4 min read</span></div>
+              <div class="course-h4">The Challenge</div>
+              <p>C.O.D.E. is a cordial line entering a market with well-known, trusted competitors. Reps needed more than facts — they needed to credibly explain why it's worth choosing over what bartenders already trust.</p>
+              <div class="course-h4">Design Decisions</div>
+              <p>Built as a page-turning storybook tied to the product's own maritime branding, opening with the real history of cordials before the pitch. A direct cordial-vs-syrup comparison pre-empts the question reps get constantly from clients. The quiz includes open-ended scenarios, not just recall.</p>
+              <div class="course-h4">Outcome</div>
+              <p>145 of 188 reps rated it 9–10 (NPS 70.2); 94.7% found it clear. A vocal minority found the pirate framing too playful for a workplace training, and one free-text quiz answer format was too strict — both are now things I check for before launch.</p>
+              <div class="course-stats">
+                <div><div class="n">70.2</div><div class="l">NPS</div></div>
+                <div><div class="n">94.7%</div><div class="l">rated clear</div></div>
+                <div><div class="n">188</div><div class="l">reps surveyed</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="course" id="case-cbnew">
+          <div class="course-head" onclick="toggleCase('case-cbnew')">
+            <div class="course-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 8.5h17"/><circle cx="6" cy="6.5" r=".6" fill="currentColor" stroke="none"/><circle cx="8" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div class="course-head-main">
+              <span class="course-tag">Internal Website</span>
+              <div class="course-title">cbnew — One Place for Sales Reps to Check New Products</div>
+            </div>
+            <span class="course-toggle">+</span>
+          </div>
+          <div class="course-body">
+            <div class="course-body-inner">
+              <div class="course-meta"><span>AI-assisted build</span><span>Docker deployment</span><span>Self-initiated</span><span>~2 min read</span></div>
+              <div class="course-h4">The Challenge</div>
+              <p>New product info was scattered. Nobody assigned this to me — I noticed reps kept asking questions a simple reference page could answer.</p>
+              <div class="course-h4">What I Did</div>
+              <p>Planned the structure, wrote the content, built it with AI-assisted coding tools, and worked with IT on server deployment (internal site, cbnew.complexbar.ru). Ran a focus group with managers before rollout.</p>
+              <div class="course-h4">Outcome</div>
+              <p>Reps use it regularly — when a client asks something on the spot, it's now the default place to check, mid-conversation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="course" id="case-critical">
+          <div class="course-head" onclick="toggleCase('case-critical')">
+            <div class="course-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.45 1 1.15 1 1.9v.2h5v-.2c0-.75.4-1.45 1-1.9A6 6 0 0 0 12 3Z"/></svg>
+            </div>
+            <div class="course-head-main">
+              <span class="course-tag">Interactive Longread</span>
+              <div class="course-title">Critical &amp; Creative Thinking — Building a Course From Scratch Mid-Crisis</div>
+            </div>
+            <span class="course-toggle">+</span>
+          </div>
+          <div class="course-body">
+            <div class="course-body-inner">
+              <div class="course-meta"><span>iSpring Suite</span><span>Custom SVG illustrations</span><span>Adapted from source material</span><span>~3 min read</span></div>
+              <div class="course-h4">The Challenge</div>
+              <p>The company lost access to its ready-made course library — a budget cut, not a planned change — right as individual development plans (IDPs) became the department's top priority. Soft-skills training suddenly had to exist to support that, with no library left to pull from.</p>
+              <div class="course-h4">Design Decisions</div>
+              <p>Adapted an English-language source instead of writing from zero, but cut its redundancy rather than translating it straight. Built custom SVG illustrations to replace the visual assets lost with the library, plus full cover and banner assets so it read as finished, not an emergency patch.</p>
+              <div class="course-h4">Outcome</div>
+              <p>Managers came away with practical tools they could apply to their day-to-day work, not just abstract theory — which was the point of tying it to the IDP process in the first place.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="course" id="case-flavor">
+          <div class="course-head" onclick="toggleCase('case-flavor')">
+            <div class="course-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 20.5V11l2-4h8l2 4v9.5"/><path d="M6 15h12M9 7V4h2v3M13 7V5h2v2"/></svg>
+            </div>
+            <div class="course-head-main">
+              <span class="course-tag">Longread</span>
+              <div class="course-title">"Фактор Вкуса" (Flavor Factor) — Turning a Factory Tour Into a Sales Argument</div>
+            </div>
+            <span class="course-toggle">+</span>
+          </div>
+          <div class="course-body">
+            <div class="course-body-inner">
+              <div class="course-meta"><span>iSpring Suite</span><span>7 sections</span><span>SME-reviewed via tracked changes</span><span>~3 min read</span></div>
+              <div class="course-h4">The Challenge</div>
+              <p>Sales managers were selling a product without a credible answer to "how is this actually made?" — the kind of question that builds trust with a client deciding between suppliers.</p>
+              <div class="course-h4">Design Decisions</div>
+              <p>Structured around the stages of production across seven sections, so reps could read start to finish or jump to whatever a client just asked about. Edited with tracked changes so production-side experts could review and approve technical content without losing a record of what changed. Paired with an internal announcement so the release didn't launch silently.</p>
+              <div class="course-h4">Outcome</div>
+              <p>It landed well beyond its intended audience — people outside sales read it out of genuine interest in how the facility works. For reps, production became something they could explain, including concrete lead times clients ask about when ordering specific flavors.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="course" id="case-digest">
+          <div class="course-head" onclick="toggleCase('case-digest')">
+            <div class="course-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4.5" width="16" height="15" rx="1"/><path d="M7 8.5h6M7 11.5h10M7 14.5h10M7 17.5h6"/></svg>
+            </div>
+            <div class="course-head-main">
+              <span class="course-tag">Internal Communications</span>
+              <div class="course-title">Company Digest — Making the Whole Organization Visible to Itself</div>
+            </div>
+            <span class="course-toggle">+</span>
+          </div>
+          <div class="course-body">
+            <div class="course-body-inner">
+              <div class="course-meta"><span>Writer / Editor</span><span>Cross-department</span><span>~3 min read</span></div>
+              <div class="course-h4">The Challenge</div>
+              <p>In a company where teams rarely see each other's work, there wasn't a regular, readable way for people across departments to see commercial results, market context, and what other teams were actually doing.</p>
+              <div class="course-h4">Design Decisions</div>
+              <p>Paired commercial results with outside context — restaurant openings, HoReCa trends — so numbers meant something. Every draft got a pass to cut generic, AI-sounding phrasing, so it read like a person wrote it for colleagues. Over time, managers started using it to share personal wins too, not just work updates — one issue covered an employee who ran a marathon and won an award, sitting right alongside commercial results.</p>
+              <div class="course-h4">Outcome</div>
+              <p>People across departments got a clearer picture of how their work connects to the company's results. After one issue, the CEO personally praised the employees mentioned in it — a sign it was being read at the top of the company, not just circulated.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section id="demo">
+    <div class="wrap">
+      <span class="eyebrow">Try a Demo</span>
+      <h2 class="h2">A 60-second version of a real course</h2>
+      <p class="section-lede">This is a condensed rebuild of the branching logic from the <a href="#case-odk" onclick="event.preventDefault(); goToCourse('case-odk');" style="border-bottom:1.5px solid var(--ink); font-weight:600;">ODK case study</a> above — the actual course puts cost math inside a live conversation instead of a reference sheet. Play it through and see the same idea at work.</p>
+
+      <div class="player">
+        <div class="player-chrome">
+          <div class="player-label">Objection-Handling — Micro Demo</div>
+          <div class="player-steps" id="player-steps"></div>
+        </div>
+        <div class="player-body" id="player-body"><!-- rendered by JS --></div>
+      </div>
+      <p class="demo-note">No data is collected — this runs entirely in your browser.</p>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <span class="eyebrow">Experience</span>
+      <h2 class="h2">Where the work happened</h2>
+
+      <div class="role-block">
+        <div class="role-dates">Dec 2023 — Present</div>
+        <div>
+          <div class="role-title">Digital Learning Specialist</div>
+          <div class="role-org">Complex Bar, Moscow — B2B glassware &amp; bar equipment distributor for HoReCa</div>
+          <ul>
+            <li>Built 35+ training assets — 15 SCORM courses, 20 structured longreads — for 350+ sales managers across Russia and the CIS</li>
+            <li>Designed the certification system: knowledge tests, case studies, situational scenarios</li>
+            <li>Run the company LMS solo — content, catalog, completion tracking</li>
+            <li>Identified a gap in product info access and built an internal reference site, coordinating with IT on deployment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role-block">
+        <div class="role-dates">Sep 2021 — Jul 2023</div>
+        <div>
+          <div class="role-title">English Teacher</div>
+          <div class="role-org">"YES" English Club, Peresvet</div>
+          <ul>
+            <li>Designed learning programs for students aged 5–14, adapted to different levels</li>
+            <li>Built materials and learning games; ran lessons and extracurricular activities</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role-block">
+        <div class="role-dates">Oct 2020 — Jun 2021</div>
+        <div>
+          <div class="role-title">English Teacher</div>
+          <div class="role-org">School No. 1329, Moscow</div>
+          <ul>
+            <li>One-on-one instruction — individual learning paths, adapted materials, progress tracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role-block">
+        <div class="role-dates">Sep 2019 — Jan 2020</div>
+        <div>
+          <div class="role-title">English Teacher</div>
+          <div class="role-org">Skyeng, Remote</div>
+          <ul>
+            <li>Taught English online across ages and levels; reviewed homework, tracked progress</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <span class="eyebrow">Education</span>
+      <h2 class="h2">Background</h2>
+
+      <h3 class="section-h">Education</h3>
+      <div class="role-block">
+        <div class="role-dates">2022 — 2023</div>
+        <div>
+          <div class="role-title">Professional Graduate Certificate in Education</div>
+          <div class="role-org">UCL Institute of Education, University of London — Teacher Development</div>
+        </div>
+      </div>
+      <div class="role-block">
+        <div class="role-dates">2018 — 2023</div>
+        <div>
+          <div class="role-title">BA (Hons), Education</div>
+          <div class="role-org">Moscow Pedagogical State University — English Language &amp; Educational Technology · GPA 4.9/5.0</div>
+        </div>
+      </div>
+
+      <h3 class="section-h">Certifications</h3>
+      <div class="role-block">
+        <div class="role-dates">2024</div>
+        <div><div class="role-title">E-learning Course Developer (Pro: Design)</div><div class="role-org">iSpring Academy</div></div>
+      </div>
+      <div class="role-block">
+        <div class="role-dates">2023</div>
+        <div><div class="role-title">ESL Certificate</div><div class="role-org">American Language Center, Moldova</div></div>
+      </div>
+      <div class="role-block">
+        <div class="role-dates">2023</div>
+        <div><div class="role-title">Montessori Method of Teaching</div><div class="role-org">CPD Certification Service</div></div>
+      </div>
+
+      <h3 class="section-h">Languages</h3>
+      <div class="skills">
+        <span class="skill">Russian — Native</span>
+        <span class="skill">English — C1</span>
+        <span class="skill">Spanish — A2</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h2 class="h2">Let's talk.</h2>
+      <p class="section-lede">Open to instructional design and L&amp;D roles — remote or relocation. Click any field below to copy it.</p>
+      <div class="contact-links">
+        <a href="mailto:maria.b.sokolova@gmail.com" data-copy="maria.b.sokolova@gmail.com"><span>maria.b.sokolova@gmail.com</span><span class="k">COPY</span></a>
+        <a href="tel:+79775714370" data-copy="+79775714370"><span>+7 977 571 43 70</span><span class="k">COPY</span></a>
+        <a href="https://linkedin.com/in/maria-sokolova-349002230" target="_blank" rel="noopener"><span>linkedin.com/in/maria-sokolova</span><span class="k">OPEN</span></a>
+        <a href="Mariia_Sokolova_CV.pdf" download><span>Mariia_Sokolova_CV.pdf</span><span class="k">DOWNLOAD</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">Mariia Sokolova — Sergiev Posad, Russia</footer>
+
+<script>
+  // ---------- Mobile menu ----------
+  const burger = document.getElementById('burger');
+  const mobilePanel = document.getElementById('mobile-panel');
+  burger.addEventListener('click', () => mobilePanel.classList.toggle('open'));
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobilePanel.classList.remove('open')));
+
+  // ---------- Scroll-spy nav ----------
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+  const sections = ['overview','courses','demo','experience','education','contact'].map(id => document.getElementById(id));
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        const id = entry.target.id;
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => s && spy.observe(s));
+
+  function goToCourse(id){
+    document.querySelectorAll('.course').forEach(c => c.classList.remove('open'));
+    const el = document.getElementById(id);
+    if (el){ el.classList.add('open'); el.scrollIntoView({behavior:'instant', block:'center'}); }
+  }
+  function goToDemo(){
+    document.getElementById('demo').scrollIntoView({behavior:'instant'});
+  }
+
+  // ---------- Case accordions ----------
+  function toggleCase(id){
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  // ---------- Contact copy-to-clipboard ----------
+  document.querySelectorAll('.contact-links a[data-copy]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const text = a.dataset.copy;
+      const keyEl = a.querySelector('.k');
+      const original = keyEl.textContent;
+      if (navigator.clipboard) navigator.clipboard.writeText(text).catch(()=>{});
+      keyEl.textContent = 'COPIED';
+      setTimeout(() => { keyEl.textContent = original; }, 1500);
+    });
+  });
+
+  // ---------- Interactive demo: branching objection-handling scenario ----------
+  const demoStates = {
+    start: {
+      step: 1,
+      eyebrow: 'Scene — mid sales call',
+      prompt: 'A bar owner says: <span class="voice">"Your glassware costs 30% more than what I use now. Why should I switch?"</span> What do you say first?',
+      choices: [
+        { label: '"Let\'s talk cost per pour, not just the price tag."', next: 'probe' },
+        { label: '"It\'s a premium product — you get what you pay for."', next: 'weakPremium' },
+        { label: '"Let me check with my manager about a discount."', next: 'weakDiscount' },
+      ]
+    },
+    weakPremium: {
+      step: 1,
+      feedback: true,
+      label: 'Client pushback',
+      text: '<span class="voice">"Everyone says that. Give me something concrete."</span> Vague reassurance doesn\'t survive a price-sensitive client\'s next question — lead with a number instead.',
+      retryTo: 'start'
+    },
+    weakDiscount: {
+      step: 1,
+      feedback: true,
+      label: 'Client pushback',
+      text: '<span class="voice">"So the first price wasn\'t the real one?"</span> Jumping to a discount before making the value case trains the client to always ask for one.',
+      retryTo: 'start'
+    },
+    probe: {
+      step: 2,
+      eyebrow: 'Scene — continued',
+      prompt: 'Good instinct. You pull up breakage data: <span class="voice">standard glass breaks about 3× more often in a busy bar shift.</span> How do you use that number?',
+      choices: [
+        { label: 'Walk through 12-month replacement cost, side by side.', next: 'end' },
+        { label: 'Just say "ours breaks less" and move on.', next: 'softEnd' },
+      ]
+    },
+    softEnd: {
+      step: 2,
+      feedback: true,
+      label: 'Partial credit',
+      text: 'True, but a bare claim isn\'t a cost argument — a rep who stops there leaves the strongest part of the pitch on the table. One follow-up question fixes it:',
+      choices: [
+        { label: 'Add the 12-month replacement math after all.', next: 'end' },
+      ]
+    },
+    end: {
+      step: 3,
+      done: true,
+      eyebrow: 'Debrief',
+      prompt: 'That\'s the shape of the real ODK course: cost math surfaces <em>inside</em> the conversation, exactly when a rep needs it — not as a separate PDF nobody opens.',
+    }
+  };
+
+  let demoState = 'start';
+
+  function renderDemo(){
+    const s = demoStates[demoState];
+    const body = document.getElementById('player-body');
+    const stepsEl = document.getElementById('player-steps');
+    stepsEl.innerHTML = [1,2,3].map(n => `<span class="player-step ${n <= s.step ? 'done' : ''}"></span>`).join('');
+
+    if (s.feedback){
+      body.innerHTML = `
+        <div class="feedback-panel">
+          <span class="fk">${s.label}</span>${s.text}
+        </div>
+        ${s.choices ? `<div class="player-choices">${s.choices.map((c,i) => `<button class="player-choice" data-i="${i}">${c.label}</button>`).join('')}</div>`
+                     : `<div class="player-btn-row"><button class="btn btn-fill" id="demo-retry">Try again</button></div>`}
+      `;
+      if (s.choices){
+        body.querySelectorAll('.player-choice').forEach((btn, i) => {
+          btn.addEventListener('click', () => { demoState = s.choices[i].next; renderDemo(); });
+        });
+      } else {
+        document.getElementById('demo-retry').addEventListener('click', () => { demoState = s.retryTo; renderDemo(); });
+      }
+      return;
+    }
+
+    if (s.done){
+      body.innerHTML = `
+        <div class="player-eyebrow">${s.eyebrow}</div>
+        <div class="player-prompt">${s.prompt}</div>
+        <div class="player-btn-row">
+          <button class="btn btn-fill" id="demo-restart">Play again</button>
+          <button class="btn btn-ghost" id="demo-see-case">See the full ODK case study</button>
+        </div>
+      `;
+      document.getElementById('demo-restart').addEventListener('click', () => { demoState = 'start'; renderDemo(); });
+      document.getElementById('demo-see-case').addEventListener('click', () => goToCourse('case-odk'));
+      return;
+    }
+
+    body.innerHTML = `
+      <div class="player-eyebrow">${s.eyebrow}</div>
+      <div class="player-prompt">${s.prompt}</div>
+      <div class="player-choices">${s.choices.map((c,i) => `<button class="player-choice" data-i="${i}">${c.label}</button>`).join('')}</div>
+    `;
+    body.querySelectorAll('.player-choice').forEach((btn, i) => {
+      btn.addEventListener('click', () => { demoState = s.choices[i].next; renderDemo(); });
+    });
+  }
+
+  renderDemo();
+</script>
+
+</body>
+</html>
