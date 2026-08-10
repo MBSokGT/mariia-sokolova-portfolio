@@ -158,15 +158,28 @@
     overflow:hidden; transition:box-shadow .18s ease, transform .18s ease;
   }
   .course:hover{ box-shadow:5px 5px 0 var(--accent); transform:translate(-2px,-2px); }
+  .course-banner{
+    height:128px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;
+    border-bottom:1.5px solid var(--ink);
+  }
+  .course-banner svg{ width:52px; height:52px; position:relative; z-index:2; }
+  .course-banner::before{
+    content:''; position:absolute; width:110px; height:110px; border:2px solid currentColor; opacity:.22;
+    border-radius:50%; top:-40px; right:-24px;
+  }
+  .course-banner::after{
+    content:''; position:absolute; width:16px; height:16px; background:currentColor; opacity:.3;
+    border-radius:50%; bottom:18px; left:28px;
+  }
+  .banner-odk{ background:var(--accent-soft); color:var(--accent); }
+  .banner-code{ background:#FBE9D9; color:#9C5A2E; }
+  .banner-cbnew{ background:#E3ECF4; color:#2E5A8C; }
+  .banner-critical{ background:#ECE6F5; color:#6B4FA0; }
+  .banner-flavor{ background:#FBE3DC; color:#B24A3D; }
+  .banner-digest{ background:#E3EEEE; color:#2E7373; }
   .course-head{
-    padding:22px 24px; cursor:pointer; display:flex; align-items:flex-start; gap:16px;
+    padding:20px 24px; cursor:pointer; display:flex; align-items:flex-start; gap:16px;
   }
-  .course-icon{
-    width:44px; height:44px; flex-shrink:0; border-radius:var(--r-md);
-    background:var(--accent-soft); border:1.5px solid var(--ink);
-    display:flex; align-items:center; justify-content:center; color:var(--accent);
-  }
-  .course-icon svg{ width:22px; height:22px; }
   .course-head-main{ flex:1; min-width:0; }
   .course-tag{
     font-size:11.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
@@ -181,14 +194,10 @@
   .course.open .course-toggle{ transform:rotate(45deg); background:var(--ink); color:var(--paper); }
   .course-body{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
   .course.open .course-body{ max-height:1600px; }
-  .course-body-inner{ padding:0 24px 26px 84px; }
-  .course-meta{ display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:var(--muted); font-weight:500; margin-bottom:16px; padding-top:16px; border-top:1px solid var(--line); }
-  .course-h4{ font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin:16px 0 7px; }
-  .course-h4:first-of-type{ margin-top:0; }
-  .course-body-inner p{ font-size:14.5px; color:#3A3E43; margin-bottom:8px; }
-  .course-stats{ display:flex; gap:26px; flex-wrap:wrap; margin-top:16px; padding-top:16px; border-top:1px solid var(--line); }
-  .course-stats .n{ font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:var(--accent); }
-  .course-stats .l{ font-size:11.5px; color:var(--muted); }
+  .course-body-inner{ padding:0 24px 26px; }
+  .course-body-inner p{ font-size:15px; color:#3A3E43; margin-bottom:12px; }
+  .course-body-inner p:last-of-type{ margin-bottom:0; }
+  .course-body-inner strong{ color:var(--ink); }
   .course-demo-link{
     display:inline-flex; align-items:center; gap:6px; margin-top:16px;
     padding:9px 15px; border:1.5px solid var(--accent); color:var(--accent);
@@ -196,8 +205,6 @@
     cursor:pointer; border-radius:var(--r-pill); transition:background .15s ease, color .15s ease;
   }
   .course-demo-link:hover{ background:var(--accent); color:var(--accent-ink); }
-
-  @media (max-width:700px){ .course-body-inner{ padding-left:24px; } }
 
   /* ---------- Demo player ---------- */
   .player{ border:1.5px solid var(--ink); border-radius:var(--r-lg); background:var(--card); overflow:hidden; margin-bottom:16px; }
@@ -291,6 +298,8 @@
     .stat-row{ grid-template-columns:1fr; }
     .contact-links{ grid-template-columns:1fr; grid-auto-flow:row; }
     .role-block{ grid-template-columns:1fr; gap:6px; }
+    .course-banner{ height:96px; }
+    .course-banner svg{ width:40px; height:40px; }
     .course-head{ padding:18px; }
     .course-body-inner{ padding:0 18px 22px; }
     .player-body{ padding:24px 20px; }
@@ -335,7 +344,7 @@
       <span class="hero-shape dot"></span>
       <div class="kicker"><span class="pulse"></span>Open to new roles — remote &amp; relocation</div>
       <h1 class="hero-h">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</h1>
-      <p class="hero-lede">Five years in learning &amp; development, the last two and a half running L&amp;D end to end for a B2B distributor — needs analysis, course design, production, and LMS administration. English C1, native Russian.</p>
+      <p class="hero-lede">Hi, I'm Mariia. For the last two and a half years I've run L&amp;D end to end, solo, for a B2B distributor — needs analysis, research, course design, production, the LMS, all of it. Before that: five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
       <div class="hero-actions">
         <a href="#courses" class="btn btn-fill">See my courses</a>
         <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost" download>Download résumé</a>
@@ -388,163 +397,129 @@
   <!-- COURSES -->
   <section id="courses">
     <div class="wrap">
-      <span class="eyebrow">Courses I've Built</span>
+      <span class="eyebrow">Selected Work</span>
       <h2 class="h2">Six courses, six different problems</h2>
-      <p class="section-lede">Each one below includes what didn't work — that's usually the more useful part to a hiring manager than the win.</p>
+      <p class="section-lede">Every one of these started as someone's actual problem, not a brief. Click through for the story — including what I'd change.</p>
 
       <div class="course-grid">
 
         <div class="course open" id="case-odk">
+          <div class="course-banner banner-odk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 5.5h16v10.5H9.5L5.5 19v-3H4z" stroke-linejoin="round"/><path d="M8 9.5h8M8 12.5h5"/></svg>
+          </div>
           <div class="course-head" onclick="toggleCase('case-odk')">
-            <div class="course-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5.5h16v10.5H9.5L5.5 19v-3H4z" stroke-linejoin="round"/><path d="M8 9.5h8M8 12.5h5"/></svg>
-            </div>
             <div class="course-head-main">
-              <span class="course-tag">Branching Dialogue Scenario</span>
+              <span class="course-tag">Branching Dialogue Scenario · iSpring Suite</span>
               <div class="course-title">ODK — Teaching Product Knowledge Through a Real Sales Call</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <div class="course-meta"><span>iSpring Suite</span><span>Dialogue simulation</span><span>75 completions</span><span>~3 min read</span></div>
-              <div class="course-h4">The Challenge</div>
-              <p>Most reps already knew the product facts. What they needed practice with was handling client objections and calculating cost on the spot.</p>
-              <div class="course-h4">Design Decisions</div>
-              <p>Built as a scripted conversation between the company's travelling manager and a bar owner. Cost math appears inside the conversation, at the point a rep would actually need it — not as a separate reference table.</p>
-              <div class="course-h4">Outcome</div>
-              <p>100% of respondents rated it clear or very clear. The most useful feedback: the simulated client agrees too easily — a "difficult client" branch is the clear next iteration.</p>
-              <div class="course-stats">
-                <div><div class="n">70.7</div><div class="l">NPS</div></div>
-                <div><div class="n">100%</div><div class="l">rated clear</div></div>
-                <div><div class="n">75</div><div class="l">reps surveyed</div></div>
-              </div>
+              <p>Most of my reps already knew the product facts cold. What tripped them up was the conversation itself — handling an objection and doing cost math out loud, in the moment, in front of a client.</p>
+              <p>So I built ODK as a scripted exchange between our travelling manager and a bar owner, and put the cost math <em>inside</em> the dialogue, right where a rep would actually need it — not in a reference sheet they'd have to remember to open mid-call.</p>
+              <p>It landed: <strong>100% of the 75 reps</strong> who tried it rated it clear or very clear, <strong>NPS 70.7</strong>. The one thing I'd change — the simulated client agrees too easily. A "difficult client" branch is next.</p>
               <div class="course-demo-link" onclick="event.stopPropagation(); goToDemo();">▶ Try a mini version of this scenario</div>
             </div>
           </div>
         </div>
 
         <div class="course" id="case-code">
+          <div class="course-banner banner-code">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2"/><path d="M12 3.5v3M12 17.5v3M20.5 12h-3M6.5 12h-3M17.9 6.1l-2.1 2.1M8.2 15.8l-2.1 2.1M17.9 17.9l-2.1-2.1M8.2 8.2 6.1 6.1"/></svg>
+          </div>
           <div class="course-head" onclick="toggleCase('case-code')">
-            <div class="course-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2"/><path d="M12 3.5v3M12 17.5v3M20.5 12h-3M6.5 12h-3M17.9 6.1l-2.1 2.1M8.2 15.8l-2.1 2.1M17.9 17.9l-2.1-2.1M8.2 8.2 6.1 6.1"/></svg>
-            </div>
             <div class="course-head-main">
-              <span class="course-tag">Interactive Storybook Course</span>
+              <span class="course-tag">Interactive Storybook · iSpring Suite</span>
               <div class="course-title">C.O.D.E. — Turning a Crowded Category Into a Story</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <div class="course-meta"><span>iSpring Suite</span><span>Storybook / pirate format</span><span>188 completions</span><span>~4 min read</span></div>
-              <div class="course-h4">The Challenge</div>
-              <p>C.O.D.E. is a cordial line entering a market with well-known, trusted competitors. Reps needed more than facts — they needed to credibly explain why it's worth choosing over what bartenders already trust.</p>
-              <div class="course-h4">Design Decisions</div>
-              <p>Built as a page-turning storybook tied to the product's own maritime branding, opening with the real history of cordials before the pitch. A direct cordial-vs-syrup comparison pre-empts the question reps get constantly from clients. The quiz includes open-ended scenarios, not just recall.</p>
-              <div class="course-h4">Outcome</div>
-              <p>145 of 188 reps rated it 9–10 (NPS 70.2); 94.7% found it clear. A vocal minority found the pirate framing too playful for a workplace training, and one free-text quiz answer format was too strict — both are now things I check for before launch.</p>
-              <div class="course-stats">
-                <div><div class="n">70.2</div><div class="l">NPS</div></div>
-                <div><div class="n">94.7%</div><div class="l">rated clear</div></div>
-                <div><div class="n">188</div><div class="l">reps surveyed</div></div>
-              </div>
+              <p>C.O.D.E. is a cordial line walking into a category full of trusted, familiar competitors. Reps needed more than a features list — they needed a way to explain, credibly, why it was worth switching.</p>
+              <p>I built it as a page-turning storybook tied to the product's own maritime branding, opening with the real history of cordials before ever getting to the pitch, then landing a direct cordial-vs-syrup comparison that pre-empts the question reps get constantly. The quiz leans on open-ended scenarios instead of pure recall.</p>
+              <p><strong>145 of 188 reps</strong> rated it 9–10 — <strong>NPS 70.2</strong>, 94.7% called it clear. A vocal minority thought the pirate framing was too playful for work training, and one quiz format graded too strictly. Both are things I check for now before I ship anything.</p>
             </div>
           </div>
         </div>
 
         <div class="course" id="case-cbnew">
+          <div class="course-banner banner-cbnew">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 8.5h17"/><circle cx="6" cy="6.5" r=".6" fill="currentColor" stroke="none"/><circle cx="8" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg>
+          </div>
           <div class="course-head" onclick="toggleCase('case-cbnew')">
-            <div class="course-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 8.5h17"/><circle cx="6" cy="6.5" r=".6" fill="currentColor" stroke="none"/><circle cx="8" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg>
-            </div>
             <div class="course-head-main">
-              <span class="course-tag">Internal Website</span>
+              <span class="course-tag">Internal Website · AI-Assisted Build</span>
               <div class="course-title">cbnew — One Place for Sales Reps to Check New Products</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <div class="course-meta"><span>AI-assisted build</span><span>Docker deployment</span><span>Self-initiated</span><span>~2 min read</span></div>
-              <div class="course-h4">The Challenge</div>
-              <p>New product info was scattered. Nobody assigned this to me — I noticed reps kept asking questions a simple reference page could answer.</p>
-              <div class="course-h4">What I Did</div>
-              <p>Planned the structure, wrote the content, built it with AI-assisted coding tools, and worked with IT on server deployment (internal site, cbnew.complexbar.ru). Ran a focus group with managers before rollout.</p>
-              <div class="course-h4">Outcome</div>
-              <p>Reps use it regularly — when a client asks something on the spot, it's now the default place to check, mid-conversation.</p>
+              <p>Nobody assigned this to me. I just kept noticing reps ask the same questions a simple reference page could answer, so I built one.</p>
+              <p>Planned the structure, wrote the content, built it with AI-assisted coding tools, and worked with IT to get it onto a real server — an internal site at <strong>cbnew.complexbar.ru</strong>. Ran a focus group with managers before it went live.</p>
+              <p>It stuck. When a client asks something mid-conversation, cbnew is now the default place reps check first.</p>
             </div>
           </div>
         </div>
 
         <div class="course" id="case-critical">
+          <div class="course-banner banner-critical">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.45 1 1.15 1 1.9v.2h5v-.2c0-.75.4-1.45 1-1.9A6 6 0 0 0 12 3Z"/></svg>
+          </div>
           <div class="course-head" onclick="toggleCase('case-critical')">
-            <div class="course-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.45 1 1.15 1 1.9v.2h5v-.2c0-.75.4-1.45 1-1.9A6 6 0 0 0 12 3Z"/></svg>
-            </div>
             <div class="course-head-main">
-              <span class="course-tag">Interactive Longread</span>
+              <span class="course-tag">Interactive Longread · iSpring Suite</span>
               <div class="course-title">Critical &amp; Creative Thinking — Building a Course From Scratch Mid-Crisis</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <div class="course-meta"><span>iSpring Suite</span><span>Custom SVG illustrations</span><span>Adapted from source material</span><span>~3 min read</span></div>
-              <div class="course-h4">The Challenge</div>
-              <p>The company lost access to its ready-made course library — a budget cut, not a planned change — right as individual development plans (IDPs) became the department's top priority. Soft-skills training suddenly had to exist to support that, with no library left to pull from.</p>
-              <div class="course-h4">Design Decisions</div>
-              <p>Adapted an English-language source instead of writing from zero, but cut its redundancy rather than translating it straight. Built custom SVG illustrations to replace the visual assets lost with the library, plus full cover and banner assets so it read as finished, not an emergency patch.</p>
-              <div class="course-h4">Outcome</div>
-              <p>Managers came away with practical tools they could apply to their day-to-day work, not just abstract theory — which was the point of tying it to the IDP process in the first place.</p>
+              <p>The company lost its ready-made course library to a budget cut right as individual development plans (IDPs) became the department's top priority — so soft-skills training suddenly had to exist, with nothing left to build it from.</p>
+              <p>I adapted an English-language source instead of starting from zero, but cut its redundancy rather than translating it line for line, and built a full set of custom SVG illustrations, covers, and banners to replace what the library used to provide — so it read as finished, not a patch job.</p>
+              <p>Managers walked away with tools for their actual day-to-day work, not abstract theory — which was the entire point of tying it to the IDP process.</p>
             </div>
           </div>
         </div>
 
         <div class="course" id="case-flavor">
+          <div class="course-banner banner-flavor">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 20.5V11l2-4h8l2 4v9.5"/><path d="M6 15h12M9 7V4h2v3M13 7V5h2v2"/></svg>
+          </div>
           <div class="course-head" onclick="toggleCase('case-flavor')">
-            <div class="course-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 20.5V11l2-4h8l2 4v9.5"/><path d="M6 15h12M9 7V4h2v3M13 7V5h2v2"/></svg>
-            </div>
             <div class="course-head-main">
-              <span class="course-tag">Longread</span>
+              <span class="course-tag">Longread · 7 Sections · iSpring Suite</span>
               <div class="course-title">"Фактор Вкуса" (Flavor Factor) — Turning a Factory Tour Into a Sales Argument</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <div class="course-meta"><span>iSpring Suite</span><span>7 sections</span><span>SME-reviewed via tracked changes</span><span>~3 min read</span></div>
-              <div class="course-h4">The Challenge</div>
-              <p>Sales managers were selling a product without a credible answer to "how is this actually made?" — the kind of question that builds trust with a client deciding between suppliers.</p>
-              <div class="course-h4">Design Decisions</div>
-              <p>Structured around the stages of production across seven sections, so reps could read start to finish or jump to whatever a client just asked about. Edited with tracked changes so production-side experts could review and approve technical content without losing a record of what changed. Paired with an internal announcement so the release didn't launch silently.</p>
-              <div class="course-h4">Outcome</div>
-              <p>It landed well beyond its intended audience — people outside sales read it out of genuine interest in how the facility works. For reps, production became something they could explain, including concrete lead times clients ask about when ordering specific flavors.</p>
+              <p>Sales managers were selling a product without a real answer to "how is this actually made?" — exactly the question that builds trust with a client comparing suppliers.</p>
+              <p>I structured it around the stages of production across seven sections, so reps could read start to finish or jump straight to whatever a client had just asked. Production-side experts reviewed it with tracked changes so nothing got approved off the record, and I paired the launch with an internal announcement so it didn't just appear quietly.</p>
+              <p>It reached people well outside the sales team who read it purely out of curiosity about how the factory works — and reps came away able to talk production with real lead times, not vague reassurance.</p>
             </div>
           </div>
         </div>
 
         <div class="course" id="case-digest">
+          <div class="course-banner banner-digest">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="4" y="4.5" width="16" height="15" rx="1"/><path d="M7 8.5h6M7 11.5h10M7 14.5h10M7 17.5h6"/></svg>
+          </div>
           <div class="course-head" onclick="toggleCase('case-digest')">
-            <div class="course-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4.5" width="16" height="15" rx="1"/><path d="M7 8.5h6M7 11.5h10M7 14.5h10M7 17.5h6"/></svg>
-            </div>
             <div class="course-head-main">
-              <span class="course-tag">Internal Communications</span>
+              <span class="course-tag">Internal Communications · Writer / Editor</span>
               <div class="course-title">Company Digest — Making the Whole Organization Visible to Itself</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <div class="course-meta"><span>Writer / Editor</span><span>Cross-department</span><span>~3 min read</span></div>
-              <div class="course-h4">The Challenge</div>
-              <p>In a company where teams rarely see each other's work, there wasn't a regular, readable way for people across departments to see commercial results, market context, and what other teams were actually doing.</p>
-              <div class="course-h4">Design Decisions</div>
-              <p>Paired commercial results with outside context — restaurant openings, HoReCa trends — so numbers meant something. Every draft got a pass to cut generic, AI-sounding phrasing, so it read like a person wrote it for colleagues. Over time, managers started using it to share personal wins too, not just work updates — one issue covered an employee who ran a marathon and won an award, sitting right alongside commercial results.</p>
-              <div class="course-h4">Outcome</div>
-              <p>People across departments got a clearer picture of how their work connects to the company's results. After one issue, the CEO personally praised the employees mentioned in it — a sign it was being read at the top of the company, not just circulated.</p>
+              <p>Teams in this company rarely saw each other's work. There wasn't a regular, readable way for people to connect commercial numbers to market context, or to what other departments were actually doing.</p>
+              <p>I paired results with outside context — restaurant openings, HoReCa trends — so the numbers meant something, and every draft got a pass specifically to cut generic, AI-sounding phrasing so it read like a person had written it for colleagues. Eventually managers started using it for personal wins too — one issue sat a marathon finish right next to commercial results.</p>
+              <p>After one issue, the CEO personally praised the people mentioned in it. That's when I knew it was actually being read, not just circulated.</p>
             </div>
           </div>
         </div>
@@ -557,7 +532,8 @@
   <section id="experience">
     <div class="wrap">
       <span class="eyebrow">Experience</span>
-      <h2 class="h2">Where the work happened</h2>
+      <h2 class="h2">How I got here</h2>
+      <p class="section-lede">I came into instructional design sideways, through teaching — four years in classrooms before I ever touched an LMS.</p>
 
       <div class="role-block">
         <div class="role-dates">Dec 2023 — Present</div>
