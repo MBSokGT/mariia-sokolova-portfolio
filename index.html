@@ -224,7 +224,6 @@
   .feedback-panel.good{ border-color:var(--accent); background:var(--accent-soft); color:#1c3a32; }
   .feedback-panel .fk{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:7px; opacity:.75; }
   .player-btn-row{ display:flex; gap:10px; flex-wrap:wrap; }
-  .demo-note{ font-size:13.5px; color:var(--muted); }
 
   /* ---------- Experience / Education ---------- */
   .role-block{
@@ -248,7 +247,10 @@
   #contact .eyebrow{ color:#8FD8C0; }
   #contact h2.h2{ color:var(--paper); }
   #contact .section-lede{ color:#B8BBBF; }
-  .contact-links{ display:flex; flex-direction:column; gap:14px; max-width:480px; margin-top:12px; }
+  .contact-links{
+    display:grid; grid-template-columns:1fr 1fr; grid-auto-flow:column; grid-template-rows:repeat(2,auto);
+    gap:14px; max-width:640px; margin-top:12px;
+  }
   .contact-links a{
     display:flex; justify-content:space-between; align-items:center;
     padding:18px 20px; border:1.5px solid #33383D; border-radius:var(--r-lg);
@@ -287,6 +289,7 @@
     h1.hero-h{ font-size:34px; }
     h2.h2{ font-size:26px; }
     .stat-row{ grid-template-columns:1fr; }
+    .contact-links{ grid-template-columns:1fr; grid-auto-flow:row; }
     .role-block{ grid-template-columns:1fr; gap:6px; }
     .course-head{ padding:18px; }
     .course-body-inner{ padding:0 18px 22px; }
@@ -301,8 +304,8 @@
     <a href="#top" class="logo"><span class="logo-mark">MS</span>Mariia Sokolova</a>
     <nav class="nav-links" id="nav-links">
       <a href="#overview">Overview</a>
-      <a href="#courses">Courses</a>
       <a href="#demo">Demo</a>
+      <a href="#courses">Courses</a>
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
@@ -314,8 +317,8 @@
   </div>
   <div class="mobile-panel" id="mobile-panel">
     <a href="#overview">Overview</a>
-    <a href="#courses">Courses</a>
     <a href="#demo">Demo</a>
+    <a href="#courses">Courses</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
@@ -344,9 +347,9 @@
       </div>
 
       <div class="stat-row" style="margin-top:52px;">
-        <div class="stat"><div class="n">188</div><div class="l">reps trained on flagship course, NPS 70.2</div></div>
+        <div class="stat"><div class="n">300+</div><div class="l">reps trained across the courses I've built</div></div>
         <div class="stat"><div class="n">35+</div><div class="l">e-learning assets shipped solo</div></div>
-        <div class="stat"><div class="n">2.5 yrs</div><div class="l">running L&amp;D as sole specialist</div></div>
+        <div class="stat"><div class="n">2.5 yrs</div><div class="l">as the L&amp;D specialist</div></div>
       </div>
 
       <div class="skills">
@@ -361,6 +364,23 @@
         <span class="skill">Staff Training &amp; Facilitation</span>
         <span class="skill">Curriculum Design</span>
         <span class="skill">PowerPoint &amp; Canva</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section id="demo">
+    <div class="wrap">
+      <span class="eyebrow">Try a Demo</span>
+      <h2 class="h2">A 60-second version of a real course</h2>
+      <p class="section-lede">A condensed rebuild of the branching logic behind the <a href="#case-odk" onclick="event.preventDefault(); goToCourse('case-odk');" style="border-bottom:1.5px solid var(--ink); font-weight:600;">ODK case study</a> below — the actual course puts cost math inside a live conversation instead of a reference sheet. Play it through, then see the full breakdown.</p>
+
+      <div class="player">
+        <div class="player-chrome">
+          <div class="player-label">Objection-Handling — Micro Demo</div>
+          <div class="player-steps" id="player-steps"></div>
+        </div>
+        <div class="player-body" id="player-body"><!-- rendered by JS --></div>
       </div>
     </div>
   </section>
@@ -533,24 +553,6 @@
     </div>
   </section>
 
-  <!-- DEMO -->
-  <section id="demo">
-    <div class="wrap">
-      <span class="eyebrow">Try a Demo</span>
-      <h2 class="h2">A 60-second version of a real course</h2>
-      <p class="section-lede">This is a condensed rebuild of the branching logic from the <a href="#case-odk" onclick="event.preventDefault(); goToCourse('case-odk');" style="border-bottom:1.5px solid var(--ink); font-weight:600;">ODK case study</a> above — the actual course puts cost math inside a live conversation instead of a reference sheet. Play it through and see the same idea at work.</p>
-
-      <div class="player">
-        <div class="player-chrome">
-          <div class="player-label">Objection-Handling — Micro Demo</div>
-          <div class="player-steps" id="player-steps"></div>
-        </div>
-        <div class="player-body" id="player-body"><!-- rendered by JS --></div>
-      </div>
-      <p class="demo-note">No data is collected — this runs entirely in your browser.</p>
-    </div>
-  </section>
-
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="wrap">
@@ -680,7 +682,7 @@
 
   // ---------- Scroll-spy nav ----------
   const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-  const sections = ['overview','courses','demo','experience','education','contact'].map(id => document.getElementById(id));
+  const sections = ['overview','demo','courses','experience','education','contact'].map(id => document.getElementById(id));
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting){
