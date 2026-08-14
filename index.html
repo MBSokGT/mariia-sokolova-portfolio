@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mariia Sokolova — Online Course Creator &amp; Instructional Designer</title>
-<meta name="description" content="Instructional designer and online course creator. Case studies, a working demo, and a résumé.">
+<meta name="description" content="Instructional designer and online course creator. Case studies and a résumé.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -17,8 +17,6 @@
     --accent:#2E6E5E;
     --accent-soft:#E4EEEA;
     --accent-ink:#FFFFFF;
-    --warn:#9C5A2E;
-    --warn-soft:#F3E7DA;
     --r-lg:18px;
     --r-md:12px;
     --r-pill:999px;
@@ -198,39 +196,6 @@
   .course-body-inner p{ font-size:15px; color:#3A3E43; margin-bottom:12px; }
   .course-body-inner p:last-of-type{ margin-bottom:0; }
   .course-body-inner strong{ color:var(--ink); }
-  .course-demo-link{
-    display:inline-flex; align-items:center; gap:6px; margin-top:16px;
-    padding:9px 15px; border:1.5px solid var(--accent); color:var(--accent);
-    font-size:13px; font-weight:600; background:var(--accent-soft);
-    cursor:pointer; border-radius:var(--r-pill); transition:background .15s ease, color .15s ease;
-  }
-  .course-demo-link:hover{ background:var(--accent); color:var(--accent-ink); }
-
-  /* ---------- Demo player ---------- */
-  .player{ border:1.5px solid var(--ink); border-radius:var(--r-lg); background:var(--card); overflow:hidden; margin-bottom:16px; }
-  .player-chrome{ display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:var(--paper); border-bottom:1.5px solid var(--ink); }
-  .player-label{ font-family:'Space Grotesk',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
-  .player-steps{ display:flex; gap:5px; }
-  .player-step{ width:22px; height:5px; border-radius:3px; background:var(--line); transition:background .25s ease; }
-  .player-step.done{ background:var(--accent); }
-  .player-body{ padding:34px 32px; min-height:280px; display:flex; flex-direction:column; }
-  .player-eyebrow{ font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:16px; }
-  .player-prompt{ font-size:18px; line-height:1.5; margin-bottom:28px; max-width:540px; }
-  .player-prompt .voice{ color:var(--muted); font-style:italic; }
-  .player-choices{ display:flex; flex-direction:column; gap:10px; margin-top:auto; }
-  .player-choice{
-    text-align:left; padding:15px 18px; border:1.5px solid var(--line); background:var(--card);
-    font-size:14.5px; font-weight:500; cursor:pointer; border-radius:var(--r-md);
-    transition:border-color .15s ease, background .15s ease, transform .15s ease;
-  }
-  .player-choice:hover{ border-color:var(--accent); background:var(--accent-soft); transform:translateX(3px); }
-  .feedback-panel{
-    padding:18px 20px; border:1.5px solid var(--warn); background:var(--warn-soft);
-    font-size:14px; color:#4a3420; margin-bottom:20px; border-radius:var(--r-md);
-  }
-  .feedback-panel.good{ border-color:var(--accent); background:var(--accent-soft); color:#1c3a32; }
-  .feedback-panel .fk{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:7px; opacity:.75; }
-  .player-btn-row{ display:flex; gap:10px; flex-wrap:wrap; }
 
   /* ---------- Experience / Education ---------- */
   .role-block{
@@ -302,7 +267,6 @@
     .course-banner svg{ width:40px; height:40px; }
     .course-head{ padding:18px; }
     .course-body-inner{ padding:0 18px 22px; }
-    .player-body{ padding:24px 20px; }
   }
 </style>
 </head>
@@ -313,7 +277,6 @@
     <a href="#top" class="logo"><span class="logo-mark">MS</span>Mariia Sokolova</a>
     <nav class="nav-links" id="nav-links">
       <a href="#overview">Overview</a>
-      <a href="#demo">Demo</a>
       <a href="#courses">Courses</a>
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
@@ -326,7 +289,6 @@
   </div>
   <div class="mobile-panel" id="mobile-panel">
     <a href="#overview">Overview</a>
-    <a href="#demo">Demo</a>
     <a href="#courses">Courses</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
@@ -377,23 +339,6 @@
     </div>
   </section>
 
-  <!-- DEMO -->
-  <section id="demo">
-    <div class="wrap">
-      <span class="eyebrow">Try a Demo</span>
-      <h2 class="h2">A 60-second version of a real course</h2>
-      <p class="section-lede">A condensed rebuild of the branching logic behind the <a href="#case-odk" onclick="event.preventDefault(); goToCourse('case-odk');" style="border-bottom:1.5px solid var(--ink); font-weight:600;">ODK case study</a> below — the actual course puts cost math inside a live conversation instead of a reference sheet. Play it through, then see the full breakdown.</p>
-
-      <div class="player">
-        <div class="player-chrome">
-          <div class="player-label">Objection-Handling — Micro Demo</div>
-          <div class="player-steps" id="player-steps"></div>
-        </div>
-        <div class="player-body" id="player-body"><!-- rendered by JS --></div>
-      </div>
-    </div>
-  </section>
-
   <!-- COURSES -->
   <section id="courses">
     <div class="wrap">
@@ -419,7 +364,6 @@
               <p>Most of my reps already knew the product facts cold. What tripped them up was the conversation itself — handling an objection and doing cost math out loud, in the moment, in front of a client.</p>
               <p>So I built ODK as a scripted exchange between our travelling manager and a bar owner, and put the cost math <em>inside</em> the dialogue, right where a rep would actually need it — not in a reference sheet they'd have to remember to open mid-call.</p>
               <p>It landed: <strong>100% of the 75 reps</strong> who tried it rated it clear or very clear, <strong>NPS 70.7</strong>. The one thing I'd change — the simulated client agrees too easily. A "difficult client" branch is next.</p>
-              <div class="course-demo-link" onclick="event.stopPropagation(); goToDemo();">▶ Try a mini version of this scenario</div>
             </div>
           </div>
         </div>
@@ -658,7 +602,7 @@
 
   // ---------- Scroll-spy nav ----------
   const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-  const sections = ['overview','demo','courses','experience','education','contact'].map(id => document.getElementById(id));
+  const sections = ['overview','courses','experience','education','contact'].map(id => document.getElementById(id));
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting){
@@ -673,9 +617,6 @@
     document.querySelectorAll('.course').forEach(c => c.classList.remove('open'));
     const el = document.getElementById(id);
     if (el){ el.classList.add('open'); el.scrollIntoView({behavior:'instant', block:'center'}); }
-  }
-  function goToDemo(){
-    document.getElementById('demo').scrollIntoView({behavior:'instant'});
   }
 
   // ---------- Case accordions ----------
@@ -696,109 +637,6 @@
     });
   });
 
-  // ---------- Interactive demo: branching objection-handling scenario ----------
-  const demoStates = {
-    start: {
-      step: 1,
-      eyebrow: 'Scene — mid sales call',
-      prompt: 'A bar owner says: <span class="voice">"Your glassware costs 30% more than what I use now. Why should I switch?"</span> What do you say first?',
-      choices: [
-        { label: '"Let\'s talk cost per pour, not just the price tag."', next: 'probe' },
-        { label: '"It\'s a premium product — you get what you pay for."', next: 'weakPremium' },
-        { label: '"Let me check with my manager about a discount."', next: 'weakDiscount' },
-      ]
-    },
-    weakPremium: {
-      step: 1,
-      feedback: true,
-      label: 'Client pushback',
-      text: '<span class="voice">"Everyone says that. Give me something concrete."</span> Vague reassurance doesn\'t survive a price-sensitive client\'s next question — lead with a number instead.',
-      retryTo: 'start'
-    },
-    weakDiscount: {
-      step: 1,
-      feedback: true,
-      label: 'Client pushback',
-      text: '<span class="voice">"So the first price wasn\'t the real one?"</span> Jumping to a discount before making the value case trains the client to always ask for one.',
-      retryTo: 'start'
-    },
-    probe: {
-      step: 2,
-      eyebrow: 'Scene — continued',
-      prompt: 'Good instinct. You pull up breakage data: <span class="voice">standard glass breaks about 3× more often in a busy bar shift.</span> How do you use that number?',
-      choices: [
-        { label: 'Walk through 12-month replacement cost, side by side.', next: 'end' },
-        { label: 'Just say "ours breaks less" and move on.', next: 'softEnd' },
-      ]
-    },
-    softEnd: {
-      step: 2,
-      feedback: true,
-      label: 'Partial credit',
-      text: 'True, but a bare claim isn\'t a cost argument — a rep who stops there leaves the strongest part of the pitch on the table. One follow-up question fixes it:',
-      choices: [
-        { label: 'Add the 12-month replacement math after all.', next: 'end' },
-      ]
-    },
-    end: {
-      step: 3,
-      done: true,
-      eyebrow: 'Debrief',
-      prompt: 'That\'s the shape of the real ODK course: cost math surfaces <em>inside</em> the conversation, exactly when a rep needs it — not as a separate PDF nobody opens.',
-    }
-  };
-
-  let demoState = 'start';
-
-  function renderDemo(){
-    const s = demoStates[demoState];
-    const body = document.getElementById('player-body');
-    const stepsEl = document.getElementById('player-steps');
-    stepsEl.innerHTML = [1,2,3].map(n => `<span class="player-step ${n <= s.step ? 'done' : ''}"></span>`).join('');
-
-    if (s.feedback){
-      body.innerHTML = `
-        <div class="feedback-panel">
-          <span class="fk">${s.label}</span>${s.text}
-        </div>
-        ${s.choices ? `<div class="player-choices">${s.choices.map((c,i) => `<button class="player-choice" data-i="${i}">${c.label}</button>`).join('')}</div>`
-                     : `<div class="player-btn-row"><button class="btn btn-fill" id="demo-retry">Try again</button></div>`}
-      `;
-      if (s.choices){
-        body.querySelectorAll('.player-choice').forEach((btn, i) => {
-          btn.addEventListener('click', () => { demoState = s.choices[i].next; renderDemo(); });
-        });
-      } else {
-        document.getElementById('demo-retry').addEventListener('click', () => { demoState = s.retryTo; renderDemo(); });
-      }
-      return;
-    }
-
-    if (s.done){
-      body.innerHTML = `
-        <div class="player-eyebrow">${s.eyebrow}</div>
-        <div class="player-prompt">${s.prompt}</div>
-        <div class="player-btn-row">
-          <button class="btn btn-fill" id="demo-restart">Play again</button>
-          <button class="btn btn-ghost" id="demo-see-case">See the full ODK case study</button>
-        </div>
-      `;
-      document.getElementById('demo-restart').addEventListener('click', () => { demoState = 'start'; renderDemo(); });
-      document.getElementById('demo-see-case').addEventListener('click', () => goToCourse('case-odk'));
-      return;
-    }
-
-    body.innerHTML = `
-      <div class="player-eyebrow">${s.eyebrow}</div>
-      <div class="player-prompt">${s.prompt}</div>
-      <div class="player-choices">${s.choices.map((c,i) => `<button class="player-choice" data-i="${i}">${c.label}</button>`).join('')}</div>
-    `;
-    body.querySelectorAll('.player-choice').forEach((btn, i) => {
-      btn.addEventListener('click', () => { demoState = s.choices[i].next; renderDemo(); });
-    });
-  }
-
-  renderDemo();
 </script>
 
 </body>
