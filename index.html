@@ -111,6 +111,18 @@
 
   /* ---------- Hero ---------- */
   .hero{ padding:96px 0 72px; position:relative; overflow:hidden; }
+  .hero-top{ display:grid; grid-template-columns:1fr 300px; gap:56px; align-items:start; }
+  .hero-photo{ position:relative; }
+  .hero-photo img{
+    width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
+    border:2px solid var(--ink); border-radius:var(--r-lg);
+    position:relative; z-index:2; background:var(--card);
+  }
+  .hero-photo::after{
+    content:''; position:absolute; inset:0; z-index:1;
+    border:2px solid var(--ink); border-radius:var(--r-lg);
+    background:var(--accent); transform:translate(10px,10px);
+  }
   .kicker{ display:flex; align-items:center; gap:9px; margin-bottom:22px; font-size:13.5px; color:var(--muted); font-weight:500; }
   .kicker .pulse{ width:8px; height:8px; border-radius:50%; background:var(--accent); position:relative; flex-shrink:0; }
   .kicker .pulse::after{
@@ -287,7 +299,8 @@
     }
     section{ padding:56px 0; }
     .hero{ padding:48px 0 40px; }
-    .hero-shape{ display:none; }
+    .hero-top{ grid-template-columns:1fr; gap:28px; }
+    .hero-photo{ max-width:240px; }
     h1.hero-h{ font-size:34px; }
     h2.h2{ font-size:26px; }
     .stat-row{ grid-template-columns:1fr; }
@@ -336,19 +349,24 @@
   <!-- OVERVIEW -->
   <section class="hero" id="overview">
     <div class="wrap">
-      <span class="hero-shape circle"></span>
-      <span class="hero-shape dot"></span>
-      <div class="kicker"><span class="pulse"></span>Open to new roles — remote &amp; relocation</div>
-      <h1 class="hero-h">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</h1>
-      <p class="hero-lede">Hi, I'm Mariia. For the last two and a half years I've run L&amp;D end to end, solo, for a B2B distributor — needs analysis, research, course design, production, the LMS, all of it. Before that: five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
-      <div class="hero-actions">
-        <a href="#courses" class="btn btn-fill">See my courses</a>
-        <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost" download>Download résumé</a>
-      </div>
-      <div class="hero-contacts">
-        <a class="chip" href="mailto:maria.b.sokolova@gmail.com">maria.b.sokolova@gmail.com</a>
-        <a class="chip" href="tel:+79775714370">+7 977 571 43 70</a>
-        <a class="chip" href="https://linkedin.com/in/maria-sokolova-349002230" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="hero-top">
+        <div class="hero-text">
+          <div class="kicker"><span class="pulse"></span>Open to new roles — remote &amp; relocation</div>
+          <h1 class="hero-h">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</h1>
+          <p class="hero-lede">Hi, I'm Mariia. For the last two and a half years I've run L&amp;D end to end, solo, for a B2B distributor — needs analysis, research, course design, production, the LMS, all of it. Before that: five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
+          <div class="hero-actions">
+            <a href="#courses" class="btn btn-fill">See my courses</a>
+            <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost" download>Download résumé</a>
+          </div>
+          <div class="hero-contacts">
+            <a class="chip" href="mailto:maria.b.sokolova@gmail.com">maria.b.sokolova@gmail.com</a>
+            <a class="chip" href="tel:+79775714370">+7 977 571 43 70</a>
+            <a class="chip" href="https://linkedin.com/in/maria-sokolova-349002230" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="media/photo.jpg" alt="Mariia Sokolova" width="800" height="998">
+        </div>
       </div>
 
       <div class="stat-row" style="margin-top:52px;">
