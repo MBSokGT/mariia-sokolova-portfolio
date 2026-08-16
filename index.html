@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mariia Sokolova — Online Course Creator &amp; Instructional Designer</title>
+<title>Mariia Sokolova · Online Course Creator &amp; Instructional Designer</title>
 <meta name="description" content="Instructional designer and online course creator. Case studies and a résumé.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mariia Sokolova — Online Course Creator &amp; Instructional Designer">
+<meta property="og:title" content="Mariia Sokolova · Online Course Creator &amp; Instructional Designer">
 <meta property="og:description" content="I design and build the online courses your team actually finishes. Case studies, process, and a résumé.">
 <meta property="og:url" content="https://mbsokgt.github.io/mariia-sokolova-portfolio/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mariia Sokolova — Online Course Creator &amp; Instructional Designer">
+<meta name="twitter:title" content="Mariia Sokolova · Online Course Creator &amp; Instructional Designer">
 <meta name="twitter:description" content="I design and build the online courses your team actually finishes. Case studies, process, and a résumé.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -166,6 +166,7 @@
     transition:border-color .15s ease, background .15s ease, transform .15s ease;
   }
   .skill:hover{ border-color:var(--accent); background:var(--accent-soft); transform:translateY(-1px); }
+  .languages-line{ font-size:13px; color:var(--muted); margin-top:18px; }
 
   /* ---------- Process ---------- */
   .process-row{
@@ -261,6 +262,38 @@
   }
   h3.section-h:first-of-type{ margin-top:0; }
 
+  /* ---------- Testimonials ---------- */
+  .testimonial-carousel{ max-width:760px; }
+  .testimonial-viewport{
+    border:1.5px solid var(--ink); border-radius:var(--r-lg); background:var(--card);
+    overflow:hidden;
+  }
+  .testimonial-track{ display:flex; transition:transform .35s ease; }
+  .testimonial-slide{
+    flex:0 0 100%; min-width:0; padding:44px 48px; min-height:190px;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .testimonial-tag{
+    font-size:11.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:10px; display:block;
+  }
+  .testimonial-quote-mark{ font-family:'Space Grotesk',sans-serif; font-size:36px; color:var(--accent); line-height:1; margin-bottom:4px; }
+  .testimonial-quote{ font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:500; line-height:1.5; margin-bottom:18px; }
+  .testimonial-author{ font-size:13px; color:var(--muted); }
+  .carousel-controls{ display:flex; align-items:center; justify-content:center; gap:18px; margin-top:22px; }
+  .carousel-btn{
+    width:38px; height:38px; border-radius:50%; border:1.5px solid var(--ink); background:var(--card);
+    cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .carousel-btn:hover{ background:var(--accent-soft); transform:translateY(-1px); }
+  .carousel-dots{ display:flex; gap:8px; }
+  .carousel-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--line); border:none; cursor:pointer; padding:0;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .carousel-dot.active{ background:var(--accent); transform:scale(1.3); }
+
   /* ---------- Contact ---------- */
   #contact{ background:var(--ink); color:var(--paper); }
   #contact .eyebrow{ color:#8FD8C0; }
@@ -316,6 +349,8 @@
     .course-banner svg{ width:40px; height:40px; }
     .course-head{ padding:18px; }
     .course-body-inner{ padding:0 18px 22px; }
+    .testimonial-slide{ padding:30px 22px; min-height:230px; }
+    .testimonial-quote{ font-size:16.5px; }
   }
 </style>
 </head>
@@ -328,6 +363,7 @@
       <a href="#overview">Overview</a>
       <a href="#process">Process</a>
       <a href="#courses">Courses</a>
+      <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
@@ -339,6 +375,7 @@
     <a href="#overview">Overview</a>
     <a href="#process">Process</a>
     <a href="#courses">Courses</a>
+    <a href="#testimonials">Reviews</a>
     <a href="#contact">Contact</a>
     <a href="Mariia_Sokolova_CV.pdf" download>Download résumé</a>
   </div>
@@ -351,9 +388,9 @@
     <div class="wrap">
       <div class="hero-top">
         <div class="hero-text">
-          <div class="kicker"><span class="pulse"></span>Open to new roles — remote &amp; relocation</div>
+          <div class="kicker"><span class="pulse"></span>Open to new roles · remote &amp; relocation</div>
           <h1 class="hero-h">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</h1>
-          <p class="hero-lede">Hi, I'm Mariia. I've spent the last year and a half running L&amp;D solo for a B2B distributor — needs analysis, research, course design, production, the LMS, all of it. The year and a half before that, I did the same work as part of a small team. Before all of it: five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
+          <p class="hero-lede">Hi, I'm Mariia. I've spent the last year and a half running L&amp;D solo for a B2B distributor: needs analysis, research, course design, production, the LMS, all of it. The year and a half before that, I did the same work as part of a small team. Before all of it, five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
           <div class="hero-actions">
             <a href="#courses" class="btn btn-fill">See my courses</a>
             <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost" download>Download résumé</a>
@@ -388,6 +425,8 @@
         <span class="skill">Curriculum Design</span>
         <span class="skill">PowerPoint &amp; Canva</span>
       </div>
+
+      <p class="languages-line">Russian, native · English, C1 · Spanish, A2</p>
     </div>
   </section>
 
@@ -402,7 +441,7 @@
         <div class="process-step">
           <div class="process-num">01</div>
           <div class="process-title">Analyze</div>
-          <div class="process-text">Start with what's actually broken — a knowledge gap, a question reps can't answer, training people won't sit through.</div>
+          <div class="process-text">Start with what's actually broken: a knowledge gap, a question reps can't answer, training people won't sit through.</div>
         </div>
         <div class="process-step">
           <div class="process-num">02</div>
@@ -433,7 +472,7 @@
     <div class="wrap">
       <span class="eyebrow">Selected Work</span>
       <h2 class="h2">Six courses, six different problems</h2>
-      <p class="section-lede">Every one of these started as someone's actual problem, not a brief. Click through for the story — including what I'd change.</p>
+      <p class="section-lede">Every one of these started as someone's actual problem, not a brief. Click through for the story, including what I'd change.</p>
 
       <div class="course-grid">
 
@@ -444,15 +483,15 @@
           <div class="course-head" onclick="toggleCase('case-odk')">
             <div class="course-head-main">
               <span class="course-tag">Branching Dialogue Scenario · iSpring Suite</span>
-              <div class="course-title">ODK — Teaching Product Knowledge Through a Real Sales Call</div>
+              <div class="course-title">ODK: Teaching Product Knowledge Through a Real Sales Call</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <p>Most of my reps already knew the product facts cold. What tripped them up was the conversation itself — handling an objection and doing cost math out loud, in the moment, in front of a client.</p>
-              <p>So I built ODK as a scripted exchange between our travelling manager and a bar owner, and put the cost math <em>inside</em> the dialogue, right where a rep would actually need it — not in a reference sheet they'd have to remember to open mid-call.</p>
-              <p>It landed: <strong>100% of the 75 reps</strong> who tried it rated it clear or very clear, <strong>NPS 70.7</strong>. The one thing I'd change — the simulated client agrees too easily. A "difficult client" branch is next.</p>
+              <p>Most of my reps already knew the product facts cold. What tripped them up was the conversation itself: handling an objection and doing cost math out loud, in the moment, in front of a client.</p>
+              <p>So I built ODK as a scripted exchange between our travelling manager and a bar owner, and put the cost math <em>inside</em> the dialogue, right where a rep would actually need it, not in a reference sheet they'd have to remember to open mid-call.</p>
+              <p>It landed: <strong>100% of the 75 reps</strong> who tried it rated it clear or very clear, NPS 70.7. The one thing I'd change: the simulated client agrees too easily. A "difficult client" branch is next.</p>
               <a href="courses/odk/index.html" target="_blank" rel="noopener" class="btn btn-fill btn-sm" style="margin-top:6px;">▶ Launch the full course</a>
             </div>
           </div>
@@ -465,15 +504,15 @@
           <div class="course-head" onclick="toggleCase('case-code')">
             <div class="course-head-main">
               <span class="course-tag">Interactive Storybook · iSpring Suite</span>
-              <div class="course-title">C.O.D.E. — Turning a Crowded Category Into a Story</div>
+              <div class="course-title">C.O.D.E.: Turning a Crowded Category Into a Story</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <p>C.O.D.E. is a cordial line walking into a category full of trusted, familiar competitors. Reps needed more than a features list — they needed a way to explain, credibly, why it was worth switching.</p>
+              <p>C.O.D.E. is a cordial line walking into a category full of trusted, familiar competitors. Reps needed more than a features list. They needed a way to explain, credibly, why it was worth switching.</p>
               <p>I built it as a page-turning storybook tied to the product's own maritime branding, opening with the real history of cordials before ever getting to the pitch, then landing a direct cordial-vs-syrup comparison that pre-empts the question reps get constantly. The quiz leans on open-ended scenarios instead of pure recall.</p>
-              <p><strong>145 of 188 reps</strong> rated it 9–10 — <strong>NPS 70.2</strong>, 94.7% called it clear. A vocal minority thought the pirate framing was too playful for work training, and one quiz format graded too strictly. Both are things I check for now before I ship anything.</p>
+              <p><strong>145 of 188 reps</strong> rated it 9–10 (NPS 70.2), and 94.7% called it clear. A vocal minority thought the pirate framing was too playful for work training, and one quiz format graded too strictly. Both are things I check for now before I ship anything.</p>
               <a href="courses/code/index.html" target="_blank" rel="noopener" class="btn btn-fill btn-sm" style="margin-top:6px;">▶ Launch the full course</a>
             </div>
           </div>
@@ -486,7 +525,7 @@
           <div class="course-head" onclick="toggleCase('case-cbnew')">
             <div class="course-head-main">
               <span class="course-tag">Internal Website · AI-Assisted Build</span>
-              <div class="course-title">cbnew — One Place for Sales Reps to Check New Products</div>
+              <div class="course-title">cbnew: One Place for Sales Reps to Check New Products</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
@@ -498,7 +537,7 @@
                 </video>
               </div>
               <p>Nobody assigned this to me. I just kept noticing reps ask the same questions a simple reference page could answer, so I built one.</p>
-              <p>Planned the structure, wrote the content, built it with AI-assisted coding tools, and worked with IT to get it onto a real server — an internal site at <strong>cbnew.complexbar.ru</strong>. Ran a focus group with managers before it went live.</p>
+              <p>Planned the structure, wrote the content, built it with AI-assisted coding tools, and worked with IT to get it onto a real server: an internal site at cbnew.complexbar.ru. Ran a focus group with managers before it went live.</p>
               <p>It stuck. When a client asks something mid-conversation, cbnew is now the default place reps check first.</p>
             </div>
           </div>
@@ -511,7 +550,7 @@
           <div class="course-head" onclick="toggleCase('case-critical')">
             <div class="course-head-main">
               <span class="course-tag">Interactive Longread · iSpring Suite</span>
-              <div class="course-title">Critical &amp; Creative Thinking — Building a Course From Scratch Mid-Crisis</div>
+              <div class="course-title">Critical &amp; Creative Thinking: Building a Course From Scratch Mid-Crisis</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
@@ -522,9 +561,9 @@
                   <source src="media/creative-demo.mp4" type="video/mp4">
                 </video>
               </div>
-              <p>The company lost its ready-made course library to a budget cut right as individual development plans (IDPs) became the department's top priority — so soft-skills training suddenly had to exist, with nothing left to build it from.</p>
-              <p>I adapted an English-language source instead of starting from zero, but cut its redundancy rather than translating it line for line, and built a full set of custom SVG illustrations, covers, and banners to replace what the library used to provide — so it read as finished, not a patch job.</p>
-              <p>Managers walked away with tools for their actual day-to-day work, not abstract theory — which was the entire point of tying it to the IDP process.</p>
+              <p>The company lost its ready-made course library to a budget cut right as individual development plans (IDPs) became the department's top priority. Soft-skills training suddenly had to exist, with nothing left to build it from.</p>
+              <p>I adapted an English-language source instead of starting from zero, but cut its redundancy rather than translating it line for line, and built a full set of custom SVG illustrations, covers, and banners to replace what the library used to provide. It needed to read as finished, not a patch job.</p>
+              <p>Managers walked away with tools for their actual day-to-day work, not abstract theory. That was the entire point of tying it to the IDP process.</p>
             </div>
           </div>
         </div>
@@ -536,18 +575,18 @@
           <div class="course-head" onclick="toggleCase('case-flavor')">
             <div class="course-head-main">
               <span class="course-tag">Longread · 7 Sections · iSpring Suite</span>
-              <div class="course-title">"Фактор Вкуса" (Flavor Factor) — Turning a Factory Tour Into a Sales Argument</div>
+              <div class="course-title">"Фактор Вкуса" (Flavor Factor): Turning a Factory Tour Into a Sales Argument</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
               <div class="course-screenshot">
-                <img src="media/flavor-screenshot.jpg" alt="Фактор Вкуса longread — production location section" loading="lazy">
+                <img src="media/flavor-screenshot.jpg" alt="Фактор Вкуса longread: production location section" loading="lazy">
               </div>
-              <p>Sales managers were selling a product without a real answer to "how is this actually made?" — exactly the question that builds trust with a client comparing suppliers.</p>
+              <p>Sales managers were selling a product without a real answer to "how is this actually made?" That's exactly the question that builds trust with a client comparing suppliers.</p>
               <p>I structured it around the stages of production across seven sections, so reps could read start to finish or jump straight to whatever a client had just asked. Production-side experts reviewed it with tracked changes so nothing got approved off the record, and I paired the launch with an internal announcement so it didn't just appear quietly.</p>
-              <p>It reached people well outside the sales team who read it purely out of curiosity about how the factory works — and reps came away able to talk production with real lead times, not vague reassurance.</p>
+              <p>It reached people well outside the sales team who read it purely out of curiosity about how the factory works. Reps came away able to talk production with real lead times, not vague reassurance.</p>
             </div>
           </div>
         </div>
@@ -559,7 +598,7 @@
           <div class="course-head" onclick="toggleCase('case-digest')">
             <div class="course-head-main">
               <span class="course-tag">Internal Communications · Writer / Editor</span>
-              <div class="course-title">Company Digest — Making the Whole Organization Visible to Itself</div>
+              <div class="course-title">Company Digest: Making the Whole Organization Visible to Itself</div>
             </div>
             <span class="course-toggle">+</span>
           </div>
@@ -571,7 +610,7 @@
                 </video>
               </div>
               <p>Teams in this company rarely saw each other's work. There wasn't a regular, readable way for people to connect commercial numbers to market context, or to what other departments were actually doing.</p>
-              <p>I paired results with outside context — restaurant openings, HoReCa trends — so the numbers meant something, and every draft got a pass specifically to cut generic, AI-sounding phrasing so it read like a person had written it for colleagues. Eventually managers started using it for personal wins too — one issue sat a marathon finish right next to commercial results.</p>
+              <p>I paired results with outside context (restaurant openings, HoReCa trends) so the numbers meant something, and every draft got a pass specifically to cut generic, AI-sounding phrasing so it read like a person had written it for colleagues. Eventually managers started using it for personal wins too: one issue sat a marathon finish right next to commercial results.</p>
               <p>After one issue, the CEO personally praised the people mentioned in it. That's when I knew it was actually being read, not just circulated.</p>
             </div>
           </div>
@@ -581,12 +620,81 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="wrap">
+      <span class="eyebrow">In Their Words</span>
+      <h2 class="h2">What reps actually said</h2>
+      <p class="section-lede">Pulled from post-course surveys for C.O.D.E. and ODK, unedited.</p>
+
+      <div class="testimonial-carousel">
+        <div class="testimonial-viewport">
+          <div class="testimonial-track" id="testimonial-track">
+            <div class="testimonial-slide">
+              <span class="testimonial-tag">C.O.D.E.</span>
+              <div class="testimonial-quote-mark">&ldquo;</div>
+              <p class="testimonial-quote">It felt like a journey, an adventure. The material has no fluff, everything is precise.</p>
+              <p class="testimonial-author">Sales Manager, post-course survey</p>
+            </div>
+            <div class="testimonial-slide">
+              <span class="testimonial-tag">C.O.D.E.</span>
+              <div class="testimonial-quote-mark">&ldquo;</div>
+              <p class="testimonial-quote">The pirate theme made me feel like an actual pirate.</p>
+              <p class="testimonial-author">Sales Manager, post-course survey</p>
+            </div>
+            <div class="testimonial-slide">
+              <span class="testimonial-tag">C.O.D.E.</span>
+              <div class="testimonial-quote-mark">&ldquo;</div>
+              <p class="testimonial-quote">The game-like format makes it more accessible for everyone, especially people new to the company.</p>
+              <p class="testimonial-author">Sales Manager, post-course survey</p>
+            </div>
+            <div class="testimonial-slide">
+              <span class="testimonial-tag">C.O.D.E.</span>
+              <div class="testimonial-quote-mark">&ldquo;</div>
+              <p class="testimonial-quote">Interesting, useful, and genuinely engaging.</p>
+              <p class="testimonial-author">Sales Manager, post-course survey</p>
+            </div>
+            <div class="testimonial-slide">
+              <span class="testimonial-tag">ODK</span>
+              <div class="testimonial-quote-mark">&ldquo;</div>
+              <p class="testimonial-quote">The presentation and animation are excellent, 10/10. It's not just about the syrups, it also covers how to actually talk to a client: identifying needs, preparing for a visit, presenting the product, handling objections.</p>
+              <p class="testimonial-author">Sales Manager, post-course survey</p>
+            </div>
+            <div class="testimonial-slide">
+              <span class="testimonial-tag">ODK</span>
+              <div class="testimonial-quote-mark">&ldquo;</div>
+              <p class="testimonial-quote">The way the material is presented is far more interesting than 100 pages of plain text with formulas pulled off the internet.</p>
+              <p class="testimonial-author">Sales Manager, post-course survey</p>
+            </div>
+            <div class="testimonial-slide">
+              <span class="testimonial-tag">ODK</span>
+              <div class="testimonial-quote-mark">&ldquo;</div>
+              <p class="testimonial-quote">Interactive format. Information is short and to the point, enough to actually practice handling client objections.</p>
+              <p class="testimonial-author">Sales Manager, post-course survey</p>
+            </div>
+            <div class="testimonial-slide">
+              <span class="testimonial-tag">ODK</span>
+              <div class="testimonial-quote-mark">&ldquo;</div>
+              <p class="testimonial-quote">I liked the visuals, and how concise the material was. Objection handling, product presentation, everything laid out clearly.</p>
+              <p class="testimonial-author">Sales Manager, post-course survey</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous testimonial">←</button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next testimonial">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
       <span class="eyebrow">Contact</span>
       <h2 class="h2">Let's talk.</h2>
-      <p class="section-lede">Open to instructional design and L&amp;D roles — remote or relocation. Click any field below to copy it.</p>
+      <p class="section-lede">Open to instructional design and L&amp;D roles, remote or relocation. Click any field below to copy it.</p>
       <div class="contact-links">
         <a href="mailto:maria.b.sokolova@gmail.com" data-copy="maria.b.sokolova@gmail.com"><span>maria.b.sokolova@gmail.com</span><span class="k">COPY</span></a>
         <a href="tel:+79775714370" data-copy="+79775714370"><span>+7 977 571 43 70</span><span class="k">COPY</span></a>
@@ -598,7 +706,7 @@
 
 </main>
 
-<footer class="site-foot">Mariia Sokolova — Sergiev Posad, Russia</footer>
+<footer class="site-foot">Mariia Sokolova · Sergiev Posad, Russia</footer>
 
 <script>
   // ---------- Mobile menu ----------
@@ -609,7 +717,7 @@
 
   // ---------- Scroll-spy nav ----------
   const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-  const sections = ['overview','process','courses','contact'].map(id => document.getElementById(id));
+  const sections = ['overview','process','courses','testimonials','contact'].map(id => document.getElementById(id));
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting){
@@ -630,6 +738,30 @@
   function toggleCase(id){
     document.getElementById(id).classList.toggle('open');
   }
+
+  // ---------- Testimonial carousel ----------
+  const track = document.getElementById('testimonial-track');
+  const dotsWrap = document.getElementById('carousel-dots');
+  const slideCount = track.children.length;
+  let slideIndex = 0;
+
+  for (let i = 0; i < slideCount; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsWrap.appendChild(dot);
+  }
+  const dots = Array.from(dotsWrap.children);
+
+  function goToSlide(i){
+    slideIndex = (i + slideCount) % slideCount;
+    track.style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
+    dots.forEach((d, di) => d.classList.toggle('active', di === slideIndex));
+  }
+
+  document.getElementById('carousel-prev').addEventListener('click', () => goToSlide(slideIndex - 1));
+  document.getElementById('carousel-next').addEventListener('click', () => goToSlide(slideIndex + 1));
 
   // ---------- Contact copy-to-clipboard ----------
   document.querySelectorAll('.contact-links a[data-copy]').forEach(a => {
