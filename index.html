@@ -238,6 +238,11 @@
     margin-bottom:18px; background:#000;
   }
   .course-video video{ width:100%; display:block; max-height:420px; }
+  .course-screenshot{
+    border:1.5px solid var(--ink); border-radius:var(--r-md); overflow:hidden;
+    margin-bottom:18px;
+  }
+  .course-screenshot img{ width:100%; display:block; }
 
   /* ---------- Experience / Education ---------- */
   .role-block{
@@ -323,8 +328,6 @@
       <a href="#overview">Overview</a>
       <a href="#process">Process</a>
       <a href="#courses">Courses</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
@@ -336,8 +339,6 @@
     <a href="#overview">Overview</a>
     <a href="#process">Process</a>
     <a href="#courses">Courses</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
     <a href="#contact">Contact</a>
     <a href="Mariia_Sokolova_CV.pdf" download>Download résumé</a>
   </div>
@@ -352,7 +353,7 @@
         <div class="hero-text">
           <div class="kicker"><span class="pulse"></span>Open to new roles — remote &amp; relocation</div>
           <h1 class="hero-h">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</h1>
-          <p class="hero-lede">Hi, I'm Mariia. For the last two and a half years I've run L&amp;D end to end, solo, for a B2B distributor — needs analysis, research, course design, production, the LMS, all of it. Before that: five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
+          <p class="hero-lede">Hi, I'm Mariia. I've spent the last year and a half running L&amp;D solo for a B2B distributor — needs analysis, research, course design, production, the LMS, all of it. The year and a half before that, I did the same work as part of a small team. Before all of it: five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
           <div class="hero-actions">
             <a href="#courses" class="btn btn-fill">See my courses</a>
             <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost" download>Download résumé</a>
@@ -416,12 +417,12 @@
         <div class="process-step">
           <div class="process-num">04</div>
           <div class="process-title">Launch</div>
-          <div class="process-text">Ship it to the LMS and announce it properly — a course that appears silently doesn't get taken.</div>
+          <div class="process-text">Ship it to the LMS and announce it properly.</div>
         </div>
         <div class="process-step">
           <div class="process-num">05</div>
           <div class="process-title">Iterate</div>
-          <div class="process-text">Read the completion data and the free-text answers, not just the NPS number. That's where the next version comes from.</div>
+          <div class="process-text">Pull the completion stats, check the test results, then run a survey to collect and read the actual feedback. That's where the next version comes from.</div>
         </div>
       </div>
     </div>
@@ -516,6 +517,11 @@
           </div>
           <div class="course-body">
             <div class="course-body-inner">
+              <div class="course-video">
+                <video controls preload="metadata" poster="media/creative-poster.jpg" playsinline>
+                  <source src="media/creative-demo.mp4" type="video/mp4">
+                </video>
+              </div>
               <p>The company lost its ready-made course library to a budget cut right as individual development plans (IDPs) became the department's top priority — so soft-skills training suddenly had to exist, with nothing left to build it from.</p>
               <p>I adapted an English-language source instead of starting from zero, but cut its redundancy rather than translating it line for line, and built a full set of custom SVG illustrations, covers, and banners to replace what the library used to provide — so it read as finished, not a patch job.</p>
               <p>Managers walked away with tools for their actual day-to-day work, not abstract theory — which was the entire point of tying it to the IDP process.</p>
@@ -536,6 +542,9 @@
           </div>
           <div class="course-body">
             <div class="course-body-inner">
+              <div class="course-screenshot">
+                <img src="media/flavor-screenshot.jpg" alt="Фактор Вкуса longread — production location section" loading="lazy">
+              </div>
               <p>Sales managers were selling a product without a real answer to "how is this actually made?" — exactly the question that builds trust with a client comparing suppliers.</p>
               <p>I structured it around the stages of production across seven sections, so reps could read start to finish or jump straight to whatever a client had just asked. Production-side experts reviewed it with tracked changes so nothing got approved off the record, and I paired the launch with an internal announcement so it didn't just appear quietly.</p>
               <p>It reached people well outside the sales team who read it purely out of curiosity about how the factory works — and reps came away able to talk production with real lead times, not vague reassurance.</p>
@@ -572,108 +581,6 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="wrap">
-      <span class="eyebrow">Experience</span>
-      <h2 class="h2">How I got here</h2>
-      <p class="section-lede">What I always loved most about teaching was designing the materials, not just delivering them. Then my degree brought in actual instructional design coursework — building real courses — and that's what hooked me.</p>
-
-      <div class="role-block">
-        <div class="role-dates">Dec 2023 — Present</div>
-        <div>
-          <div class="role-title">Digital Learning Specialist</div>
-          <div class="role-org">Complex Bar, Moscow — B2B glassware &amp; bar equipment distributor for HoReCa</div>
-          <ul>
-            <li>Built 35+ training assets — 15 SCORM courses, 20 structured longreads — for 350+ sales managers across Russia and the CIS</li>
-            <li>Designed the certification system: knowledge tests, case studies, situational scenarios</li>
-            <li>Run the company LMS solo — content, catalog, completion tracking</li>
-            <li>Identified a gap in product info access and built an internal reference site, coordinating with IT on deployment</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="role-block">
-        <div class="role-dates">Sep 2021 — Jul 2023</div>
-        <div>
-          <div class="role-title">English Teacher</div>
-          <div class="role-org">"YES" English Club, Peresvet</div>
-          <ul>
-            <li>Designed learning programs for students aged 5–14, adapted to different levels</li>
-            <li>Built materials and learning games; ran lessons and extracurricular activities</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="role-block">
-        <div class="role-dates">Oct 2020 — Jun 2021</div>
-        <div>
-          <div class="role-title">English Teacher</div>
-          <div class="role-org">School No. 1329, Moscow</div>
-          <ul>
-            <li>One-on-one instruction — individual learning paths, adapted materials, progress tracking</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="role-block">
-        <div class="role-dates">Sep 2019 — Jan 2020</div>
-        <div>
-          <div class="role-title">English Teacher</div>
-          <div class="role-org">Skyeng, Remote</div>
-          <ul>
-            <li>Taught English online across ages and levels; reviewed homework, tracked progress</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="wrap">
-      <span class="eyebrow">Education</span>
-      <h2 class="h2">Background</h2>
-
-      <h3 class="section-h">Education</h3>
-      <div class="role-block">
-        <div class="role-dates">2022 — 2023</div>
-        <div>
-          <div class="role-title">Professional Graduate Certificate in Education</div>
-          <div class="role-org">UCL Institute of Education, University of London — Teacher Development</div>
-        </div>
-      </div>
-      <div class="role-block">
-        <div class="role-dates">2018 — 2023</div>
-        <div>
-          <div class="role-title">BA (Hons), Education</div>
-          <div class="role-org">Moscow Pedagogical State University — English Language &amp; Educational Technology · GPA 4.9/5.0</div>
-        </div>
-      </div>
-
-      <h3 class="section-h">Certifications</h3>
-      <div class="role-block">
-        <div class="role-dates">2024</div>
-        <div><div class="role-title">E-learning Course Developer (Pro: Design)</div><div class="role-org">iSpring Academy</div></div>
-      </div>
-      <div class="role-block">
-        <div class="role-dates">2023</div>
-        <div><div class="role-title">ESL Certificate</div><div class="role-org">American Language Center, Moldova</div></div>
-      </div>
-      <div class="role-block">
-        <div class="role-dates">2023</div>
-        <div><div class="role-title">Montessori Method of Teaching</div><div class="role-org">CPD Certification Service</div></div>
-      </div>
-
-      <h3 class="section-h">Languages</h3>
-      <div class="skills">
-        <span class="skill">Russian — Native</span>
-        <span class="skill">English — C1</span>
-        <span class="skill">Spanish — A2</span>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
@@ -702,7 +609,7 @@
 
   // ---------- Scroll-spy nav ----------
   const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-  const sections = ['overview','process','courses','experience','education','contact'].map(id => document.getElementById(id));
+  const sections = ['overview','process','courses','contact'].map(id => document.getElementById(id));
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting){
