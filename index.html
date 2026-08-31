@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,8 @@
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth; overflow-x:hidden;}
+  html[data-lang="en"] .lang-ru{ display:none; }
+  html[data-lang="ru"] .lang-en{ display:none; }
   body{
     background:var(--paper);
     color:var(--ink);
@@ -82,16 +84,25 @@
     display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
     flex-shrink:0;
   }
-  .nav-links{ display:flex; align-items:center; gap:30px; }
+  .nav-links{ display:flex; align-items:center; gap:26px; }
   .nav-links a{
     font-size:14.5px; font-weight:500; text-decoration:none; color:var(--ink);
     padding:6px 0; border-bottom:2px solid transparent; transition:border-color .15s ease, color .15s ease;
   }
   .nav-links a:hover, .nav-links a.active{ border-color:var(--accent); color:var(--accent); }
   .nav-cta{ display:flex; align-items:center; gap:10px; }
+  .lang-switch{ display:flex; border:1.5px solid var(--ink); border-radius:var(--r-pill); overflow:hidden; }
+  .lang-btn{
+    padding:8px 13px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12px;
+    background:var(--card); cursor:pointer; border:none; transition:background .15s ease, color .15s ease;
+  }
+  .lang-btn.active{ background:var(--ink); color:var(--paper); }
+  .lang-btn:not(.active):hover{ background:var(--accent-soft); }
   .burger{ display:none; width:38px; height:38px; border:1.5px solid var(--ink); border-radius:var(--r-md); background:var(--card); cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
   .burger span{ width:16px; height:2px; background:var(--ink); display:block; }
   .mobile-panel{ display:none; }
+  .mobile-lang-row{ display:flex; gap:8px; padding:14px 4px 10px; }
+  .mobile-lang-row .lang-btn{ flex:1; padding:10px; }
 
   /* ---------- Buttons (flat, hard-offset shadow) ---------- */
   .btn{
@@ -245,23 +256,6 @@
   }
   .course-screenshot img{ width:100%; display:block; }
 
-  /* ---------- Experience / Education ---------- */
-  .role-block{
-    display:grid; grid-template-columns:160px 1fr; gap:24px;
-    padding:26px 0; border-top:1px solid var(--line);
-  }
-  .role-block:last-child{ border-bottom:1px solid var(--line); }
-  .role-dates{ font-size:13px; color:var(--muted); font-weight:500; padding-top:3px; }
-  .role-title{ font-family:'Space Grotesk',sans-serif; font-size:17.5px; font-weight:600; margin-bottom:3px; }
-  .role-org{ font-size:14px; color:var(--muted); margin-bottom:12px; }
-  .role-block ul{ padding-left:18px; font-size:14.5px; color:#3A3E43; }
-  .role-block li{ margin-bottom:6px; }
-  h3.section-h{
-    font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700; text-transform:uppercase;
-    letter-spacing:.06em; color:var(--muted); margin:48px 0 6px;
-  }
-  h3.section-h:first-of-type{ margin-top:0; }
-
   /* ---------- Testimonials ---------- */
   .testimonial-carousel{ max-width:820px; margin:0 auto; }
   .testimonial-viewport{
@@ -312,7 +306,7 @@
   .contact-links a:hover{ border-color:var(--accent); transform:translate(-2px,-2px); }
   .contact-links .k{
     color:#8FD8C0; font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:600;
-    min-width:70px; text-align:right;
+    min-width:80px; text-align:right;
   }
 
   footer.site-foot{
@@ -326,6 +320,7 @@
     .nav-inner{ padding:0 20px; }
     .nav-links{ display:none; }
     .nav-cta .btn-ghost{ display:none; }
+    .nav-cta .lang-switch{ display:none; }
     .burger{ display:flex; }
     .mobile-panel.open{
       display:flex; flex-direction:column; gap:2px; padding:10px 20px 16px;
@@ -344,7 +339,6 @@
     .process-row{ grid-template-columns:1fr; gap:24px; }
     .process-step:not(:last-child)::after{ display:none; }
     .contact-links{ grid-template-columns:1fr; grid-auto-flow:row; }
-    .role-block{ grid-template-columns:1fr; gap:6px; }
     .course-banner{ height:96px; }
     .course-banner svg{ width:40px; height:40px; }
     .course-head{ padding:18px; }
@@ -360,24 +354,32 @@
   <div class="nav-inner">
     <a href="#top" class="logo"><span class="logo-mark">MS</span>Mariia Sokolova</a>
     <nav class="nav-links" id="nav-links">
-      <a href="#overview">Overview</a>
-      <a href="#process">Process</a>
-      <a href="#courses">Courses</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#contact">Contact</a>
+      <a href="#overview"><span class="lang-en">Overview</span><span class="lang-ru">Обо мне</span></a>
+      <a href="#process"><span class="lang-en">Process</span><span class="lang-ru">Процесс</span></a>
+      <a href="#courses"><span class="lang-en">Courses</span><span class="lang-ru">Курсы</span></a>
+      <a href="#testimonials"><span class="lang-en">Reviews</span><span class="lang-ru">Отзывы</span></a>
+      <a href="#contact"><span class="lang-en">Contact</span><span class="lang-ru">Контакты</span></a>
     </nav>
     <div class="nav-cta">
-      <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost btn-sm" download>Résumé</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang-btn="en">EN</button>
+        <button class="lang-btn" data-lang-btn="ru">RU</button>
+      </div>
+      <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost btn-sm" download><span class="lang-en">Résumé</span><span class="lang-ru">Резюме</span></a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <div class="mobile-panel" id="mobile-panel">
-    <a href="#overview">Overview</a>
-    <a href="#process">Process</a>
-    <a href="#courses">Courses</a>
-    <a href="#testimonials">Reviews</a>
-    <a href="#contact">Contact</a>
-    <a href="Mariia_Sokolova_CV.pdf" download>Download résumé</a>
+    <div class="mobile-lang-row">
+      <button class="lang-btn" data-lang-btn="en">EN</button>
+      <button class="lang-btn" data-lang-btn="ru">RU</button>
+    </div>
+    <a href="#overview"><span class="lang-en">Overview</span><span class="lang-ru">Обо мне</span></a>
+    <a href="#process"><span class="lang-en">Process</span><span class="lang-ru">Процесс</span></a>
+    <a href="#courses"><span class="lang-en">Courses</span><span class="lang-ru">Курсы</span></a>
+    <a href="#testimonials"><span class="lang-en">Reviews</span><span class="lang-ru">Отзывы</span></a>
+    <a href="#contact"><span class="lang-en">Contact</span><span class="lang-ru">Контакты</span></a>
+    <a href="Mariia_Sokolova_CV.pdf" download><span class="lang-en">Download résumé</span><span class="lang-ru">Скачать резюме</span></a>
   </div>
 </header>
 
@@ -388,12 +390,20 @@
     <div class="wrap">
       <div class="hero-top">
         <div class="hero-text">
-          <div class="kicker"><span class="pulse"></span>Open to new roles · remote &amp; relocation</div>
-          <h1 class="hero-h">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</h1>
-          <p class="hero-lede">Hi, I'm Mariia. I've spent the last year and a half running L&amp;D solo for a B2B distributor: needs analysis, research, course design, production, the LMS, all of it. The year and a half before that, I did the same work as part of a small team. Before all of it, five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
+          <div class="kicker">
+            <span class="pulse"></span>
+            <span class="lang-en">Open to new roles · remote &amp; relocation</span>
+            <span class="lang-ru">Открыта к новым предложениям · удалённо или с переездом</span>
+          </div>
+          <h1 class="hero-h">
+            <span class="lang-en">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</span>
+            <span class="lang-ru">Я проектирую и собираю онлайн-курсы, которые команда <span class="accent-word">реально проходит до конца</span>.</span>
+          </h1>
+          <p class="hero-lede lang-en">Hi, I'm Mariia. I've spent the last year and a half running L&amp;D solo for a B2B distributor: needs analysis, research, course design, production, the LMS, all of it. The year and a half before that, I did the same work as part of a small team. Before all of it, five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
+          <p class="hero-lede lang-ru">Привет, я Мария. Последние полтора года веду обучение и развитие персонала одна, для B2B-дистрибьютора: анализ потребностей, исследование, разработка курсов, продакшн, LMS, всё на мне. До этого полтора года делала то же самое в команде. А ещё раньше пять лет преподавала английский, и именно там я научилась чувствовать темп подачи материала и то, сколько внимания человек способен удержать.</p>
           <div class="hero-actions">
-            <a href="#courses" class="btn btn-fill">See my courses</a>
-            <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost" download>Download résumé</a>
+            <a href="#courses" class="btn btn-fill"><span class="lang-en">See my courses</span><span class="lang-ru">Смотреть курсы</span></a>
+            <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost" download><span class="lang-en">Download résumé</span><span class="lang-ru">Скачать резюме</span></a>
           </div>
           <div class="hero-contacts">
             <a class="chip" href="mailto:maria.b.sokolova@gmail.com">maria.b.sokolova@gmail.com</a>
@@ -407,61 +417,89 @@
       </div>
 
       <div class="stat-row" style="margin-top:52px;">
-        <div class="stat"><div class="n">300+</div><div class="l">reps trained across the courses I've built</div></div>
-        <div class="stat"><div class="n">35+</div><div class="l">e-learning assets shipped solo</div></div>
-        <div class="stat"><div class="n">2.5 yrs</div><div class="l">as the L&amp;D specialist</div></div>
+        <div class="stat">
+          <div class="n">300+</div>
+          <div class="l"><span class="lang-en">reps trained across the courses I've built</span><span class="lang-ru">менеджеров прошли курсы, которые я создала</span></div>
+        </div>
+        <div class="stat">
+          <div class="n">35+</div>
+          <div class="l"><span class="lang-en">e-learning assets shipped solo</span><span class="lang-ru">e-learning продуктов сделано в одиночку</span></div>
+        </div>
+        <div class="stat">
+          <div class="n"><span class="lang-en">2.5 yrs</span><span class="lang-ru">2,5 года</span></div>
+          <div class="l"><span class="lang-en">as the L&amp;D specialist</span><span class="lang-ru">в роли L&amp;D-специалиста</span></div>
+        </div>
       </div>
 
       <div class="skills">
-        <span class="skill">Instructional Design (ADDIE)</span>
-        <span class="skill">Online Course Development</span>
+        <span class="skill"><span class="lang-en">Instructional Design (ADDIE)</span><span class="lang-ru">Инструкционный дизайн (ADDIE)</span></span>
+        <span class="skill"><span class="lang-en">Online Course Development</span><span class="lang-ru">Разработка онлайн-курсов</span></span>
         <span class="skill">iSpring Suite</span>
         <span class="skill">SCORM</span>
-        <span class="skill">LMS Administration</span>
-        <span class="skill">Learning Analytics</span>
-        <span class="skill">Assessment Design</span>
-        <span class="skill">Branching Scenarios</span>
-        <span class="skill">Staff Training &amp; Facilitation</span>
-        <span class="skill">Curriculum Design</span>
+        <span class="skill"><span class="lang-en">LMS Administration</span><span class="lang-ru">Администрирование LMS</span></span>
+        <span class="skill"><span class="lang-en">Learning Analytics</span><span class="lang-ru">Аналитика обучения</span></span>
+        <span class="skill"><span class="lang-en">Assessment Design</span><span class="lang-ru">Разработка тестов и оценки</span></span>
+        <span class="skill"><span class="lang-en">Branching Scenarios</span><span class="lang-ru">Ветвящиеся сценарии</span></span>
+        <span class="skill"><span class="lang-en">Staff Training &amp; Facilitation</span><span class="lang-ru">Обучение и фасилитация персонала</span></span>
+        <span class="skill"><span class="lang-en">Curriculum Design</span><span class="lang-ru">Проектирование учебных программ</span></span>
         <span class="skill">PowerPoint &amp; Canva</span>
       </div>
 
-      <p class="languages-line">Russian, native · English, C1 · Spanish, A2</p>
+      <p class="languages-line">
+        <span class="lang-en">Russian, native · English, C1 · Spanish, A2</span>
+        <span class="lang-ru">Русский: родной · Английский: C1 · Испанский: A2</span>
+      </p>
     </div>
   </section>
 
   <!-- PROCESS -->
   <section id="process">
     <div class="wrap">
-      <span class="eyebrow">How I Work</span>
-      <h2 class="h2">Same process, every project</h2>
-      <p class="section-lede">Different problem every time, same five steps underneath. Here's what actually happens between "we need a course" and reps using it.</p>
+      <span class="eyebrow"><span class="lang-en">How I Work</span><span class="lang-ru">Как я работаю</span></span>
+      <h2 class="h2"><span class="lang-en">Same process, every project</span><span class="lang-ru">Один процесс на каждый проект</span></h2>
+      <p class="section-lede lang-en">Different problem every time, same five steps underneath. Here's what actually happens between "we need a course" and reps using it.</p>
+      <p class="section-lede lang-ru">Задача каждый раз новая, а шагов всегда пять. Вот что происходит между фразой "нужен курс" и моментом, когда менеджеры начинают им пользоваться.</p>
 
       <div class="process-row">
         <div class="process-step">
           <div class="process-num">01</div>
-          <div class="process-title">Analyze</div>
-          <div class="process-text">Start with what's actually broken: a knowledge gap, a question reps can't answer, training people won't sit through.</div>
+          <div class="process-title"><span class="lang-en">Analyze</span><span class="lang-ru">Анализ</span></div>
+          <div class="process-text">
+            <span class="lang-en">Start with what's actually broken: a knowledge gap, a question reps can't answer, training people won't sit through.</span>
+            <span class="lang-ru">Начинаю с того, что реально сломано: пробел в знаниях, вопрос, на который менеджеры не могут ответить, обучение, которое никто не станет проходить.</span>
+          </div>
         </div>
         <div class="process-step">
           <div class="process-num">02</div>
-          <div class="process-title">Design</div>
-          <div class="process-text">Script the flow: the dialogue, the decision points, what happens when someone gets it wrong. Most of the thinking happens here.</div>
+          <div class="process-title"><span class="lang-en">Design</span><span class="lang-ru">Дизайн</span></div>
+          <div class="process-text">
+            <span class="lang-en">Script the flow: the dialogue, the decision points, what happens when someone gets it wrong. Most of the thinking happens here.</span>
+            <span class="lang-ru">Прописываю сценарий: диалог, точки выбора, что происходит, если человек ошибается. Основная часть работы происходит именно здесь.</span>
+          </div>
         </div>
         <div class="process-step">
           <div class="process-num">03</div>
-          <div class="process-title">Build</div>
-          <div class="process-text">Build it in iSpring Suite, illustrate what's missing, get it working end to end before anyone else sees it.</div>
+          <div class="process-title"><span class="lang-en">Build</span><span class="lang-ru">Сборка</span></div>
+          <div class="process-text">
+            <span class="lang-en">Build it in iSpring Suite, illustrate what's missing, get it working end to end before anyone else sees it.</span>
+            <span class="lang-ru">Собираю курс в iSpring Suite, дорисовываю недостающие иллюстрации и довожу до рабочего состояния от начала до конца, прежде чем кто-то ещё это увидит.</span>
+          </div>
         </div>
         <div class="process-step">
           <div class="process-num">04</div>
-          <div class="process-title">Launch</div>
-          <div class="process-text">Ship it to the LMS and announce it properly.</div>
+          <div class="process-title"><span class="lang-en">Launch</span><span class="lang-ru">Запуск</span></div>
+          <div class="process-text">
+            <span class="lang-en">Ship it to the LMS and announce it properly.</span>
+            <span class="lang-ru">Загружаю курс в LMS и анонсирую его как положено.</span>
+          </div>
         </div>
         <div class="process-step">
           <div class="process-num">05</div>
-          <div class="process-title">Iterate</div>
-          <div class="process-text">Pull the completion stats, check the test results, then run a survey to collect and read the actual feedback. That's where the next version comes from.</div>
+          <div class="process-title"><span class="lang-en">Iterate</span><span class="lang-ru">Доработка</span></div>
+          <div class="process-text">
+            <span class="lang-en">Pull the completion stats, check the test results, then run a survey to collect and read the actual feedback. That's where the next version comes from.</span>
+            <span class="lang-ru">Смотрю статистику прохождения, проверяю результаты тестов, потом запускаю опрос и читаю реальные отзывы. Именно оттуда берётся следующая версия курса.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -470,9 +508,10 @@
   <!-- COURSES -->
   <section id="courses">
     <div class="wrap">
-      <span class="eyebrow">Selected Work</span>
-      <h2 class="h2">Six courses, six different problems</h2>
-      <p class="section-lede">Every one of these started as someone's actual problem, not a brief. Click through for the story, including what I'd change.</p>
+      <span class="eyebrow"><span class="lang-en">Selected Work</span><span class="lang-ru">Избранные проекты</span></span>
+      <h2 class="h2"><span class="lang-en">Six courses, six different problems</span><span class="lang-ru">Шесть курсов, шесть разных задач</span></h2>
+      <p class="section-lede lang-en">Every one of these started as someone's actual problem, not a brief. Click through for the story, including what I'd change.</p>
+      <p class="section-lede lang-ru">Каждый из них начинался с чьей-то реальной проблемы, а не с брифа. Откройте карточку, чтобы прочитать историю, включая то, что я бы изменила.</p>
 
       <div class="course-grid">
 
@@ -482,17 +521,26 @@
           </div>
           <div class="course-head" onclick="toggleCase('case-odk')">
             <div class="course-head-main">
-              <span class="course-tag">Branching Dialogue Scenario · iSpring Suite</span>
-              <div class="course-title">ODK: Teaching Product Knowledge Through a Real Sales Call</div>
+              <span class="course-tag"><span class="lang-en">Branching Dialogue Scenario · iSpring Suite</span><span class="lang-ru">Ветвящийся диалог · iSpring Suite</span></span>
+              <div class="course-title">
+                <span class="lang-en">ODK: Teaching Product Knowledge Through a Real Sales Call</span>
+                <span class="lang-ru">ODK: обучение продукту через реальный разговор с клиентом</span>
+              </div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <p>Most of my reps already knew the product facts cold. What tripped them up was the conversation itself: handling an objection and doing cost math out loud, in the moment, in front of a client.</p>
-              <p>So I built ODK as a scripted exchange between our travelling manager and a bar owner, and put the cost math <em>inside</em> the dialogue, right where a rep would actually need it, not in a reference sheet they'd have to remember to open mid-call.</p>
-              <p>It landed: <strong>100% of the 75 reps</strong> who tried it rated it clear or very clear, NPS 70.7. The one thing I'd change: the simulated client agrees too easily. A "difficult client" branch is next.</p>
-              <a href="courses/odk/index.html" target="_blank" rel="noopener" class="btn btn-fill btn-sm" style="margin-top:6px;">▶ Launch the full course</a>
+              <p class="lang-en">Most of my reps already knew the product facts cold. What tripped them up was the conversation itself: handling an objection and doing cost math out loud, in the moment, in front of a client.</p>
+              <p class="lang-ru">Менеджеры и так знали продукт наизусть. Спотыкались они на самом разговоре: отработке возражений и расчёте стоимости вслух, на месте, перед клиентом.</p>
+              <p class="lang-en">So I built ODK as a scripted exchange between our travelling manager and a bar owner, and put the cost math <em>inside</em> the dialogue, right where a rep would actually need it, not in a reference sheet they'd have to remember to open mid-call.</p>
+              <p class="lang-ru">Поэтому я сделала ODK как сценарий диалога между нашим разъездным менеджером и владельцем бара, а расчёт стоимости встроила прямо в разговор, именно там, где он нужен, а не в отдельную шпаргалку, про которую нужно вспомнить посреди звонка.</p>
+              <p class="lang-en">It landed: <strong>100% of the 75 reps</strong> who tried it rated it clear or very clear, NPS 70.7. The one thing I'd change: the simulated client agrees too easily. A "difficult client" branch is next.</p>
+              <p class="lang-ru">Сработало: все 75 менеджеров, прошедших курс, оценили его как понятный или очень понятный, NPS 70,7. Единственное, что я бы поменяла: смоделированный клиент слишком легко соглашается. Дальше в планах ветка со "сложным клиентом".</p>
+              <a href="courses/odk/index.html" target="_blank" rel="noopener" class="btn btn-fill btn-sm" style="margin-top:6px;">
+                <span class="lang-en">▶ Launch the full course</span>
+                <span class="lang-ru">▶ Открыть курс целиком</span>
+              </a>
             </div>
           </div>
         </div>
@@ -503,17 +551,26 @@
           </div>
           <div class="course-head" onclick="toggleCase('case-code')">
             <div class="course-head-main">
-              <span class="course-tag">Interactive Storybook · iSpring Suite</span>
-              <div class="course-title">C.O.D.E.: Turning a Crowded Category Into a Story</div>
+              <span class="course-tag"><span class="lang-en">Interactive Storybook · iSpring Suite</span><span class="lang-ru">Интерактивная книга-история · iSpring Suite</span></span>
+              <div class="course-title">
+                <span class="lang-en">C.O.D.E.: Turning a Crowded Category Into a Story</span>
+                <span class="lang-ru">C.O.D.E.: как превратить конкурентную категорию в историю</span>
+              </div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
-              <p>C.O.D.E. is a cordial line walking into a category full of trusted, familiar competitors. Reps needed more than a features list. They needed a way to explain, credibly, why it was worth switching.</p>
-              <p>I built it as a page-turning storybook tied to the product's own maritime branding, opening with the real history of cordials before ever getting to the pitch, then landing a direct cordial-vs-syrup comparison that pre-empts the question reps get constantly. The quiz leans on open-ended scenarios instead of pure recall.</p>
-              <p><strong>145 of 188 reps</strong> rated it 9–10 (NPS 70.2), and 94.7% called it clear. A vocal minority thought the pirate framing was too playful for work training, and one quiz format graded too strictly. Both are things I check for now before I ship anything.</p>
-              <a href="courses/code/index.html" target="_blank" rel="noopener" class="btn btn-fill btn-sm" style="margin-top:6px;">▶ Launch the full course</a>
+              <p class="lang-en">C.O.D.E. is a cordial line walking into a category full of trusted, familiar competitors. Reps needed more than a features list. They needed a way to explain, credibly, why it was worth switching.</p>
+              <p class="lang-ru">C.O.D.E., линейка кордиалов, выходит на рынок, где клиенты уже доверяют другим, знакомым брендам. Менеджерам был нужен не список характеристик, а способ убедительно объяснить, зачем вообще переходить на другой продукт.</p>
+              <p class="lang-en">I built it as a page-turning storybook tied to the product's own maritime branding, opening with the real history of cordials before ever getting to the pitch, then landing a direct cordial-vs-syrup comparison that pre-empts the question reps get constantly. The quiz leans on open-ended scenarios instead of pure recall.</p>
+              <p class="lang-ru">Я сделала курс как книгу с перелистыванием страниц, завязанную на морской брендинг продукта: сначала настоящая история кордиалов, и только потом презентация. Прямое сравнение кордиала с сиропом снимает вопрос, который менеджерам задают постоянно. В квизе не столько проверка памяти, сколько открытые ситуации из практики.</p>
+              <p class="lang-en"><strong>145 of 188 reps</strong> rated it 9–10 (NPS 70.2), and 94.7% called it clear. A vocal minority thought the pirate framing was too playful for work training, and one quiz format graded too strictly. Both are things I check for now before I ship anything.</p>
+              <p class="lang-ru"><strong>145 из 188 менеджеров</strong> поставили курсу 9–10 баллов (NPS 70,2), а 94,7% назвали его понятным. Часть аудитории посчитала пиратскую тему слишком несерьёзной для рабочего обучения, а один формат вопроса в квизе оценивался слишком строго. Теперь я проверяю оба момента перед запуском любого курса.</p>
+              <a href="courses/code/index.html" target="_blank" rel="noopener" class="btn btn-fill btn-sm" style="margin-top:6px;">
+                <span class="lang-en">▶ Launch the full course</span>
+                <span class="lang-ru">▶ Открыть курс целиком</span>
+              </a>
             </div>
           </div>
         </div>
@@ -524,8 +581,11 @@
           </div>
           <div class="course-head" onclick="toggleCase('case-cbnew')">
             <div class="course-head-main">
-              <span class="course-tag">Internal Website · AI-Assisted Build</span>
-              <div class="course-title">cbnew: One Place for Sales Reps to Check New Products</div>
+              <span class="course-tag"><span class="lang-en">Internal Website · AI-Assisted Build</span><span class="lang-ru">Внутренний сайт · собран с ИИ-инструментами</span></span>
+              <div class="course-title">
+                <span class="lang-en">cbnew: One Place for Sales Reps to Check New Products</span>
+                <span class="lang-ru">cbnew: единое место для проверки новинок</span>
+              </div>
             </div>
             <span class="course-toggle">+</span>
           </div>
@@ -536,9 +596,12 @@
                   <source src="media/cbnew-demo.mp4" type="video/mp4">
                 </video>
               </div>
-              <p>Nobody assigned this to me. I just kept noticing reps ask the same questions a simple reference page could answer, so I built one.</p>
-              <p>Planned the structure, wrote the content, built it with AI-assisted coding tools, and worked with IT to get it onto a real server: an internal site at cbnew.complexbar.ru. Ran a focus group with managers before it went live.</p>
-              <p>It stuck. When a client asks something mid-conversation, cbnew is now the default place reps check first.</p>
+              <p class="lang-en">Nobody assigned this to me. I just kept noticing reps ask the same questions a simple reference page could answer, so I built one.</p>
+              <p class="lang-ru">Никто мне это не поручал. Я просто заметила, что менеджеры постоянно задают одни и те же вопросы, на которые могла бы ответить простая справочная страница, и сделала её.</p>
+              <p class="lang-en">Planned the structure, wrote the content, built it with AI-assisted coding tools, and worked with IT to get it onto a real server: an internal site at cbnew.complexbar.ru. Ran a focus group with managers before it went live.</p>
+              <p class="lang-ru">Продумала структуру, написала контент, собрала сайт с помощью ИИ-инструментов для разработки и вместе с IT развернула его на сервере: внутренний сайт cbnew.complexbar.ru. Перед запуском проверила его на фокус-группе менеджеров.</p>
+              <p class="lang-en">It stuck. When a client asks something mid-conversation, cbnew is now the default place reps check first.</p>
+              <p class="lang-ru">Прижилось. Когда клиент спрашивает что-то посреди разговора, cbnew теперь первое место, куда заглядывают менеджеры.</p>
             </div>
           </div>
         </div>
@@ -549,8 +612,11 @@
           </div>
           <div class="course-head" onclick="toggleCase('case-critical')">
             <div class="course-head-main">
-              <span class="course-tag">Interactive Longread · iSpring Suite</span>
-              <div class="course-title">Critical &amp; Creative Thinking: Building a Course From Scratch Mid-Crisis</div>
+              <span class="course-tag"><span class="lang-en">Interactive Longread · iSpring Suite</span><span class="lang-ru">Интерактивный лонгрид · iSpring Suite</span></span>
+              <div class="course-title">
+                <span class="lang-en">Critical &amp; Creative Thinking: Building a Course From Scratch Mid-Crisis</span>
+                <span class="lang-ru">Критическое и творческое мышление: курс с нуля посреди кризиса</span>
+              </div>
             </div>
             <span class="course-toggle">+</span>
           </div>
@@ -561,9 +627,12 @@
                   <source src="media/creative-demo.mp4" type="video/mp4">
                 </video>
               </div>
-              <p>The company lost its ready-made course library to a budget cut right as individual development plans (IDPs) became the department's top priority. Soft-skills training suddenly had to exist, with nothing left to build it from.</p>
-              <p>I adapted an English-language source instead of starting from zero, but cut its redundancy rather than translating it line for line, and built a full set of custom SVG illustrations, covers, and banners to replace what the library used to provide. It needed to read as finished, not a patch job.</p>
-              <p>Managers walked away with tools for their actual day-to-day work, not abstract theory. That was the entire point of tying it to the IDP process.</p>
+              <p class="lang-en">The company lost its ready-made course library to a budget cut right as individual development plans (IDPs) became the department's top priority. Soft-skills training suddenly had to exist, with nothing left to build it from.</p>
+              <p class="lang-ru">Компания из-за сокращения бюджета потеряла доступ к готовой библиотеке курсов ровно в тот момент, когда индивидуальные планы развития (ИПР) стали приоритетом отдела. Обучение soft skills нужно было создать, а материалов для этого не осталось.</p>
+              <p class="lang-en">I adapted an English-language source instead of starting from zero, but cut its redundancy rather than translating it line for line, and built a full set of custom SVG illustrations, covers, and banners to replace what the library used to provide. It needed to read as finished, not a patch job.</p>
+              <p class="lang-ru">Вместо того чтобы начинать с нуля, я адаптировала англоязычный источник, но не переводила его дословно, а убрала повторы. Ещё нарисовала набор SVG-иллюстраций, обложку и баннеры взамен того, что раньше давала библиотека. Курс должен был выглядеть завершённым, а не заплаткой на скорую руку.</p>
+              <p class="lang-en">Managers walked away with tools for their actual day-to-day work, not abstract theory. That was the entire point of tying it to the IDP process.</p>
+              <p class="lang-ru">Руководители получили инструменты для реальной ежедневной работы, а не абстрактную теорию. В этом и был смысл привязки курса к процессу ИПР.</p>
             </div>
           </div>
         </div>
@@ -574,19 +643,25 @@
           </div>
           <div class="course-head" onclick="toggleCase('case-flavor')">
             <div class="course-head-main">
-              <span class="course-tag">Longread · 7 Sections · iSpring Suite</span>
-              <div class="course-title">"Фактор Вкуса" (Flavor Factor): Turning a Factory Tour Into a Sales Argument</div>
+              <span class="course-tag"><span class="lang-en">Longread · 7 Sections · iSpring Suite</span><span class="lang-ru">Лонгрид · 7 разделов · iSpring Suite</span></span>
+              <div class="course-title">
+                <span class="lang-en">"Фактор Вкуса" (Flavor Factor): Turning a Factory Tour Into a Sales Argument</span>
+                <span class="lang-ru">"Фактор Вкуса": как превратить экскурсию по заводу в аргумент для продажи</span>
+              </div>
             </div>
             <span class="course-toggle">+</span>
           </div>
           <div class="course-body">
             <div class="course-body-inner">
               <div class="course-screenshot">
-                <img src="media/flavor-screenshot.jpg" alt="Фактор Вкуса longread: production location section" loading="lazy">
+                <img src="media/flavor-screenshot.jpg" alt="Фактор Вкуса longread" loading="lazy">
               </div>
-              <p>Sales managers were selling a product without a real answer to "how is this actually made?" That's exactly the question that builds trust with a client comparing suppliers.</p>
-              <p>I structured it around the stages of production across seven sections, so reps could read start to finish or jump straight to whatever a client had just asked. Production-side experts reviewed it with tracked changes so nothing got approved off the record, and I paired the launch with an internal announcement so it didn't just appear quietly.</p>
-              <p>It reached people well outside the sales team who read it purely out of curiosity about how the factory works. Reps came away able to talk production with real lead times, not vague reassurance.</p>
+              <p class="lang-en">Sales managers were selling a product without a real answer to "how is this actually made?" That's exactly the question that builds trust with a client comparing suppliers.</p>
+              <p class="lang-ru">Менеджеры продавали продукт, не имея внятного ответа на вопрос "а как это вообще производят?". А ведь именно этот вопрос формирует доверие у клиента, который выбирает между поставщиками.</p>
+              <p class="lang-en">I structured it around the stages of production across seven sections, so reps could read start to finish or jump straight to whatever a client had just asked. Production-side experts reviewed it with tracked changes so nothing got approved off the record, and I paired the launch with an internal announcement so it didn't just appear quietly.</p>
+              <p class="lang-ru">Я выстроила курс вокруг этапов производства, разбив его на семь разделов: можно читать по порядку или сразу перейти к тому, о чём спросил клиент. Эксперты со стороны производства проверяли текст через режим правок, чтобы ничего не утверждалось на словах, а запуск сопроводила внутренним анонсом, чтобы курс не появился незаметно.</p>
+              <p class="lang-en">It reached people well outside the sales team who read it purely out of curiosity about how the factory works. Reps came away able to talk production with real lead times, not vague reassurance.</p>
+              <p class="lang-ru">Курс читали далеко не только продажники, просто из любопытства, как устроен завод. А менеджеры теперь могут говорить о производстве конкретными сроками, а не общими заверениями.</p>
             </div>
           </div>
         </div>
@@ -597,8 +672,11 @@
           </div>
           <div class="course-head" onclick="toggleCase('case-digest')">
             <div class="course-head-main">
-              <span class="course-tag">Internal Communications · Writer / Editor</span>
-              <div class="course-title">Company Digest: Making the Whole Organization Visible to Itself</div>
+              <span class="course-tag"><span class="lang-en">Internal Communications · Writer / Editor</span><span class="lang-ru">Внутренние коммуникации · автор и редактор</span></span>
+              <div class="course-title">
+                <span class="lang-en">Company Digest: Making the Whole Organization Visible to Itself</span>
+                <span class="lang-ru">Company Digest: как показать компании саму себя</span>
+              </div>
             </div>
             <span class="course-toggle">+</span>
           </div>
@@ -609,9 +687,12 @@
                   <source src="media/digest-demo.mp4" type="video/mp4">
                 </video>
               </div>
-              <p>Teams in this company rarely saw each other's work. There wasn't a regular, readable way for people to connect commercial numbers to market context, or to what other departments were actually doing.</p>
-              <p>I paired results with outside context (restaurant openings, HoReCa trends) so the numbers meant something, and every draft got a pass specifically to cut generic, AI-sounding phrasing so it read like a person had written it for colleagues. Eventually managers started using it for personal wins too: one issue sat a marathon finish right next to commercial results.</p>
-              <p>After one issue, the CEO personally praised the people mentioned in it. That's when I knew it was actually being read, not just circulated.</p>
+              <p class="lang-en">Teams in this company rarely saw each other's work. There wasn't a regular, readable way for people to connect commercial numbers to market context, or to what other departments were actually doing.</p>
+              <p class="lang-ru">Команды в компании редко видели работу друг друга. Не было регулярного и понятного формата, который связывал бы коммерческие показатели с ситуацией на рынке и тем, чем реально занимаются другие отделы.</p>
+              <p class="lang-en">I paired results with outside context (restaurant openings, HoReCa trends) so the numbers meant something, and every draft got a pass specifically to cut generic, AI-sounding phrasing so it read like a person had written it for colleagues. Eventually managers started using it for personal wins too: one issue sat a marathon finish right next to commercial results.</p>
+              <p class="lang-ru">Я сопровождала цифры внешним контекстом (открытия ресторанов, тренды HoReCa), чтобы показатели что-то значили, и в каждом черновике отдельно вычищала общие, ИИ-звучащие формулировки, чтобы текст читался так, будто его написал человек для коллег. Со временем руководители стали присылать туда и личные достижения: в одном выпуске финиш марафона соседствовал с коммерческими результатами.</p>
+              <p class="lang-en">After one issue, the CEO personally praised the people mentioned in it. That's when I knew it was actually being read, not just circulated.</p>
+              <p class="lang-ru">После одного из выпусков генеральный директор лично похвалил упомянутых в нём людей. Тогда я поняла, что дайджест действительно читают, а не просто рассылают.</p>
             </div>
           </div>
         </div>
@@ -623,9 +704,10 @@
   <!-- TESTIMONIALS -->
   <section id="testimonials">
     <div class="wrap">
-      <span class="eyebrow">In Their Words</span>
-      <h2 class="h2">What reps actually said</h2>
-      <p class="section-lede">Pulled from post-course surveys for C.O.D.E. and ODK, unedited.</p>
+      <span class="eyebrow"><span class="lang-en">In Their Words</span><span class="lang-ru">Отзывы менеджеров</span></span>
+      <h2 class="h2"><span class="lang-en">What reps actually said</span><span class="lang-ru">Что говорят менеджеры</span></h2>
+      <p class="section-lede lang-en">Pulled from post-course surveys for C.O.D.E. and ODK, unedited.</p>
+      <p class="section-lede lang-ru">Из опросов после курсов C.O.D.E. и ODK, без правок.</p>
 
       <div class="testimonial-carousel">
         <div class="testimonial-viewport">
@@ -633,50 +715,58 @@
             <div class="testimonial-slide">
               <span class="testimonial-tag">C.O.D.E.</span>
               <div class="testimonial-quote-mark">&ldquo;</div>
-              <p class="testimonial-quote">It felt like a journey, an adventure. The material has no fluff, everything is precise.</p>
-              <p class="testimonial-author">Sales Manager, post-course survey</p>
+              <p class="testimonial-quote lang-en">It felt like a journey, an adventure. The material has no fluff, everything is precise.</p>
+              <p class="testimonial-quote lang-ru">Это было похоже на путешествие, приключение. В материале нет ничего лишнего, всё точно по делу.</p>
+              <p class="testimonial-author"><span class="lang-en">Sales Manager, post-course survey</span><span class="lang-ru">Менеджер по продажам, опрос после курса</span></p>
             </div>
             <div class="testimonial-slide">
               <span class="testimonial-tag">C.O.D.E.</span>
               <div class="testimonial-quote-mark">&ldquo;</div>
-              <p class="testimonial-quote">The pirate theme made me feel like an actual pirate.</p>
-              <p class="testimonial-author">Sales Manager, post-course survey</p>
+              <p class="testimonial-quote lang-en">The pirate theme made me feel like an actual pirate.</p>
+              <p class="testimonial-quote lang-ru">Из-за пиратской темы я реально почувствовал себя пиратом.</p>
+              <p class="testimonial-author"><span class="lang-en">Sales Manager, post-course survey</span><span class="lang-ru">Менеджер по продажам, опрос после курса</span></p>
             </div>
             <div class="testimonial-slide">
               <span class="testimonial-tag">C.O.D.E.</span>
               <div class="testimonial-quote-mark">&ldquo;</div>
-              <p class="testimonial-quote">The game-like format makes it more accessible for everyone, especially people new to the company.</p>
-              <p class="testimonial-author">Sales Manager, post-course survey</p>
+              <p class="testimonial-quote lang-en">The game-like format makes it more accessible for everyone, especially people new to the company.</p>
+              <p class="testimonial-quote lang-ru">Игровой формат делает курс понятнее для всех, особенно для новичков в компании.</p>
+              <p class="testimonial-author"><span class="lang-en">Sales Manager, post-course survey</span><span class="lang-ru">Менеджер по продажам, опрос после курса</span></p>
             </div>
             <div class="testimonial-slide">
               <span class="testimonial-tag">C.O.D.E.</span>
               <div class="testimonial-quote-mark">&ldquo;</div>
-              <p class="testimonial-quote">Interesting, useful, and genuinely engaging.</p>
-              <p class="testimonial-author">Sales Manager, post-course survey</p>
+              <p class="testimonial-quote lang-en">Interesting, useful, and genuinely engaging.</p>
+              <p class="testimonial-quote lang-ru">Интересно, полезно и по-настоящему увлекательно.</p>
+              <p class="testimonial-author"><span class="lang-en">Sales Manager, post-course survey</span><span class="lang-ru">Менеджер по продажам, опрос после курса</span></p>
             </div>
             <div class="testimonial-slide">
               <span class="testimonial-tag">ODK</span>
               <div class="testimonial-quote-mark">&ldquo;</div>
-              <p class="testimonial-quote">The presentation and animation are excellent, 10/10. It's not just about the syrups, it also covers how to actually talk to a client: identifying needs, preparing for a visit, presenting the product, handling objections.</p>
-              <p class="testimonial-author">Sales Manager, post-course survey</p>
+              <p class="testimonial-quote lang-en">The presentation and animation are excellent, 10/10. It's not just about the syrups, it also covers how to actually talk to a client: identifying needs, preparing for a visit, presenting the product, handling objections.</p>
+              <p class="testimonial-quote lang-ru">Подача и анимация на отлично, 10 из 10. И это не только про сиропы: здесь ещё показано, как разговаривать с клиентом, выявлять потребности, готовиться к встрече, презентовать продукт, отрабатывать возражения.</p>
+              <p class="testimonial-author"><span class="lang-en">Sales Manager, post-course survey</span><span class="lang-ru">Менеджер по продажам, опрос после курса</span></p>
             </div>
             <div class="testimonial-slide">
               <span class="testimonial-tag">ODK</span>
               <div class="testimonial-quote-mark">&ldquo;</div>
-              <p class="testimonial-quote">The way the material is presented is far more interesting than 100 pages of plain text with formulas pulled off the internet.</p>
-              <p class="testimonial-author">Sales Manager, post-course survey</p>
+              <p class="testimonial-quote lang-en">The way the material is presented is far more interesting than 100 pages of plain text with formulas pulled off the internet.</p>
+              <p class="testimonial-quote lang-ru">Материал подан гораздо интереснее, чем 100 страниц сплошного текста с формулами, надёрганными из интернета.</p>
+              <p class="testimonial-author"><span class="lang-en">Sales Manager, post-course survey</span><span class="lang-ru">Менеджер по продажам, опрос после курса</span></p>
             </div>
             <div class="testimonial-slide">
               <span class="testimonial-tag">ODK</span>
               <div class="testimonial-quote-mark">&ldquo;</div>
-              <p class="testimonial-quote">Interactive format. Information is short and to the point, enough to actually practice handling client objections.</p>
-              <p class="testimonial-author">Sales Manager, post-course survey</p>
+              <p class="testimonial-quote lang-en">Interactive format. Information is short and to the point, enough to actually practice handling client objections.</p>
+              <p class="testimonial-quote lang-ru">Интерактивный формат. Информации немного, но по делу, достаточно, чтобы реально потренироваться отрабатывать возражения клиентов.</p>
+              <p class="testimonial-author"><span class="lang-en">Sales Manager, post-course survey</span><span class="lang-ru">Менеджер по продажам, опрос после курса</span></p>
             </div>
             <div class="testimonial-slide">
               <span class="testimonial-tag">ODK</span>
               <div class="testimonial-quote-mark">&ldquo;</div>
-              <p class="testimonial-quote">I liked the visuals, and how concise the material was. Objection handling, product presentation, everything laid out clearly.</p>
-              <p class="testimonial-author">Sales Manager, post-course survey</p>
+              <p class="testimonial-quote lang-en">I liked the visuals, and how concise the material was. Objection handling, product presentation, everything laid out clearly.</p>
+              <p class="testimonial-quote lang-ru">Понравилась визуальная часть и то, насколько сжато подан материал. Отработка возражений, презентация продукта: всё разложено понятно.</p>
+              <p class="testimonial-author"><span class="lang-en">Sales Manager, post-course survey</span><span class="lang-ru">Менеджер по продажам, опрос после курса</span></p>
             </div>
           </div>
         </div>
@@ -692,23 +782,59 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
-      <span class="eyebrow">Contact</span>
-      <h2 class="h2">Let's talk.</h2>
-      <p class="section-lede">Open to instructional design and L&amp;D roles, remote or relocation. Click any field below to copy it.</p>
+      <span class="eyebrow"><span class="lang-en">Contact</span><span class="lang-ru">Контакты</span></span>
+      <h2 class="h2"><span class="lang-en">Let's talk.</span><span class="lang-ru">На связи.</span></h2>
+      <p class="section-lede lang-en">Open to instructional design and L&amp;D roles, remote or relocation. Click any field below to copy it.</p>
+      <p class="section-lede lang-ru">Открыта к ролям instructional designer и L&amp;D-специалиста, удалённо или с переездом. Нажмите на поле ниже, чтобы скопировать его.</p>
       <div class="contact-links">
-        <a href="mailto:maria.b.sokolova@gmail.com" data-copy="maria.b.sokolova@gmail.com"><span>maria.b.sokolova@gmail.com</span><span class="k">COPY</span></a>
-        <a href="tel:+79775714370" data-copy="+79775714370"><span>+7 977 571 43 70</span><span class="k">COPY</span></a>
-        <a href="https://linkedin.com/in/maria-sokolova-349002230" target="_blank" rel="noopener"><span>linkedin.com/in/maria-sokolova</span><span class="k">OPEN</span></a>
-        <a href="Mariia_Sokolova_CV.pdf" download><span>Mariia_Sokolova_CV.pdf</span><span class="k">DOWNLOAD</span></a>
+        <a href="mailto:maria.b.sokolova@gmail.com" data-copy="maria.b.sokolova@gmail.com">
+          <span>maria.b.sokolova@gmail.com</span>
+          <span class="k"><span class="lang-en">COPY</span><span class="lang-ru">СКОПИРОВАТЬ</span></span>
+        </a>
+        <a href="tel:+79775714370" data-copy="+79775714370">
+          <span>+7 977 571 43 70</span>
+          <span class="k"><span class="lang-en">COPY</span><span class="lang-ru">СКОПИРОВАТЬ</span></span>
+        </a>
+        <a href="https://linkedin.com/in/maria-sokolova-349002230" target="_blank" rel="noopener">
+          <span>linkedin.com/in/maria-sokolova</span>
+          <span class="k"><span class="lang-en">OPEN</span><span class="lang-ru">ОТКРЫТЬ</span></span>
+        </a>
+        <a href="Mariia_Sokolova_CV.pdf" download>
+          <span>Mariia_Sokolova_CV.pdf</span>
+          <span class="k"><span class="lang-en">DOWNLOAD</span><span class="lang-ru">СКАЧАТЬ</span></span>
+        </a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-foot">Mariia Sokolova · Sergiev Posad, Russia</footer>
+<footer class="site-foot">
+  <span class="lang-en">Mariia Sokolova · Sergiev Posad, Russia</span>
+  <span class="lang-ru">Мария Соколова · Сергиев Посад, Россия</span>
+</footer>
 
 <script>
+  // ---------- Language switch ----------
+  const TITLE_EN = "Mariia Sokolova · Online Course Creator & Instructional Designer";
+  const TITLE_RU = "Мария Соколова · Создатель онлайн-курсов и инструкционный дизайнер";
+
+  function setLang(lang){
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.langBtn === lang));
+    document.title = lang === 'ru' ? TITLE_RU : TITLE_EN;
+    try { localStorage.setItem('site-lang', lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
+  });
+
+  let savedLang = 'en';
+  try { savedLang = localStorage.getItem('site-lang') || 'en'; } catch(e){}
+  setLang(savedLang);
+
   // ---------- Mobile menu ----------
   const burger = document.getElementById('burger');
   const mobilePanel = document.getElementById('mobile-panel');
@@ -769,10 +895,13 @@
       e.preventDefault();
       const text = a.dataset.copy;
       const keyEl = a.querySelector('.k');
-      const original = keyEl.textContent;
+      const visibleSpan = keyEl.querySelector('.lang-en:not([style*="display: none"]), .lang-ru:not([style*="display: none"])') || keyEl;
+      const lang = document.documentElement.getAttribute('data-lang');
+      const target = keyEl.querySelector('.lang-' + lang) || keyEl;
+      const original = target.textContent;
       if (navigator.clipboard) navigator.clipboard.writeText(text).catch(()=>{});
-      keyEl.textContent = 'COPIED';
-      setTimeout(() => { keyEl.textContent = original; }, 1500);
+      target.textContent = lang === 'ru' ? 'СКОПИРОВАНО' : 'COPIED';
+      setTimeout(() => { target.textContent = original; }, 1500);
     });
   });
 
