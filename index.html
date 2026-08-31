@@ -826,21 +826,33 @@
   const TITLE_EN = "Mariia Sokolova · Online Course Creator & Instructional Designer";
   const TITLE_RU = "Мария Соколова · Создатель онлайн-курсов и инструкционный дизайнер";
 
-  function setLang(lang){
+  function getUrlLang(){
+    const v = new URLSearchParams(window.location.search).get('lang');
+    return (v === 'ru' || v === 'en') ? v : null;
+  }
+
+  function setLang(lang, updateUrl){
     document.documentElement.setAttribute('data-lang', lang);
     document.documentElement.setAttribute('lang', lang);
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.langBtn === lang));
     document.title = lang === 'ru' ? TITLE_RU : TITLE_EN;
     try { localStorage.setItem('site-lang', lang); } catch(e){}
+    if (updateUrl){
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+    }
   }
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
+    btn.addEventListener('click', () => setLang(btn.dataset.langBtn, true));
   });
 
-  let savedLang = 'en';
-  try { savedLang = localStorage.getItem('site-lang') || 'en'; } catch(e){}
-  setLang(savedLang);
+  let initialLang = getUrlLang();
+  if (!initialLang){
+    try { initialLang = localStorage.getItem('site-lang'); } catch(e){}
+  }
+  setLang(initialLang || 'en', false);
 
   // ---------- Mobile menu ----------
   const burger = document.getElementById('burger');
