@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mariia Sokolova · Online Course Creator &amp; Instructional Designer</title>
-<meta name="description" content="Instructional designer and online course creator. Case studies and a résumé.">
+<title>Mariia Sokolova · L&amp;D Specialist &amp; Instructional Designer</title>
+<meta name="description" content="L&amp;D specialist and instructional designer building scalable learning systems for sales teams.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mariia Sokolova · Online Course Creator &amp; Instructional Designer">
-<meta property="og:description" content="I design and build the online courses your team actually finishes. Case studies, process, and a résumé.">
+<meta property="og:title" content="Mariia Sokolova · L&amp;D Specialist &amp; Instructional Designer">
+<meta property="og:description" content="I build scalable learning systems for sales teams, from needs analysis to evaluation.">
 <meta property="og:url" content="https://mbsokgt.github.io/mariia-sokolova-portfolio/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mariia Sokolova · Online Course Creator &amp; Instructional Designer">
-<meta name="twitter:description" content="I design and build the online courses your team actually finishes. Case studies, process, and a résumé.">
+<meta name="twitter:title" content="Mariia Sokolova · L&amp;D Specialist &amp; Instructional Designer">
+<meta name="twitter:description" content="I build scalable learning systems for sales teams, from needs analysis to evaluation.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -178,6 +178,13 @@
   }
   .skill:hover{ border-color:var(--accent); background:var(--accent-soft); transform:translateY(-1px); }
   .languages-line{ font-size:13px; color:var(--muted); margin-top:18px; }
+  .education-line{ font-size:13px; color:var(--muted); margin-top:10px; }
+
+  /* ---------- Ownership ---------- */
+  .ownership-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:28px; }
+  .ownership-item{ padding:20px; border:1.5px solid var(--line); border-radius:var(--r-lg); background:var(--card); }
+  .ownership-item h3{ font-size:16px; margin-bottom:7px; }
+  .ownership-item p{ font-size:13.5px; color:var(--muted); line-height:1.55; }
 
   /* ---------- Process ---------- */
   .process-row{
@@ -343,6 +350,7 @@
     h2.h2{ font-size:26px; }
     .stat-row{ grid-template-columns:1fr; }
     .process-row{ grid-template-columns:1fr; gap:24px; }
+    .ownership-grid{ grid-template-columns:1fr; }
     .process-step:not(:last-child)::after{ display:none; }
     .contact-links{ grid-template-columns:1fr; grid-auto-flow:row; }
     .course-banner{ height:96px; }
@@ -407,8 +415,8 @@
             <span class="lang-en">I design and build the online courses your team actually <span class="accent-word">finishes</span>.</span>
             <span class="lang-ru">Я проектирую и собираю онлайн-курсы, которые команда <span class="accent-word">проходит до конца</span>.</span>
           </h1>
-          <p class="hero-lede lang-en">Hi, I'm Mariia. I've spent the last year and a half running L&amp;D solo for a B2B distributor: needs analysis, research, course design, production, the LMS, all of it. The year and a half before that, I did the same work as part of a small team. Before all of it, five years teaching English, which is honestly where I learned to think about pacing and attention span in the first place.</p>
-          <p class="hero-lede lang-ru">Привет, я Мария. Последние полтора года веду обучение и развитие персонала одна, для B2B-дистрибьютора: анализ потребностей, исследование, разработка курсов, продакшн, LMS, всё на мне. До этого полтора года делала то же самое в команде. А ещё раньше пять лет преподавала английский, и именно там я научилась чувствовать темп подачи материала и то, сколько внимания человек способен удержать.</p>
+          <p class="hero-lede lang-en">I'm an L&amp;D specialist and instructional designer who builds scalable learning systems for sales teams — from needs analysis and curriculum design to e-learning production, LMS operations and learning evaluation. For the past three years, I've owned L&amp;D end to end for a B2B distributor: working with sales leaders, prioritising learning needs, coordinating internal experts and external trainers, and turning one-off requests into repeatable processes.</p>
+          <p class="hero-lede lang-ru">Я специалист по L&amp;D и инструкционный дизайнер, который выстраивает обучение для коммерческих команд: от анализа потребностей и проектирования программы до разработки e-learning, сопровождения LMS и оценки результатов. Последние три года я полностью веду L&amp;D в B2B-дистрибьюторе: взаимодействую с руководителями продаж, определяю приоритеты, координирую внутренних экспертов и внешних тренеров и превращаю разовые запросы в устойчивые процессы.</p>
           <div class="hero-actions">
             <a href="#courses" class="btn btn-fill"><span class="lang-en">See my courses</span><span class="lang-ru">Смотреть курсы</span></a>
             <a href="Mariia_Sokolova_CV.pdf" class="btn btn-ghost lang-en" download>Download résumé</a>
@@ -435,7 +443,7 @@
           <div class="l"><span class="lang-en">e-learning assets shipped solo</span><span class="lang-ru">e-learning продуктов сделано</span></div>
         </div>
         <div class="stat">
-          <div class="n"><span class="lang-en">2.5 yrs</span><span class="lang-ru">2,5 года</span></div>
+          <div class="n"><span class="lang-en">3 yrs</span><span class="lang-ru">3 года</span></div>
           <div class="l"><span class="lang-en">as the L&amp;D specialist</span><span class="lang-ru">в роли L&amp;D-специалиста</span></div>
         </div>
       </div>
@@ -453,6 +461,7 @@
         <span class="skill"><span class="lang-en">Curriculum Design</span><span class="lang-ru">Проектирование учебных программ</span></span>
         <span class="skill">PowerPoint &amp; Canva</span>
       </div>
+      <p class="education-line"><span class="lang-en">Professional Graduate Certificate in Education (Teacher Development), UCL Institute of Education, University of London</span><span class="lang-ru">Профессиональный последипломный сертификат в области образования (Teacher Development), UCL Institute of Education, University of London</span></p>
 
       <p class="languages-line">
         <span class="lang-en">Russian, native · English, C1 · Spanish, A2</span>
@@ -509,6 +518,29 @@
             <span class="lang-en">Pull the completion stats, check the test results, then run a survey to collect and read the actual feedback. That's where the next version comes from.</span>
             <span class="lang-ru">Смотрю статистику прохождения, проверяю результаты тестов, потом запускаю опрос и читаю реальные отзывы. Именно оттуда берётся следующая версия курса.</span>
           </div>
+        </div>
+      </div>
+
+      <div class="ownership-grid">
+        <div class="ownership-item">
+          <h3><span class="lang-en">Partner with sales</span><span class="lang-ru">Работа с продажами</span></h3>
+          <p class="lang-en">Work with sales leaders to connect learning priorities to launches, field questions and day-to-day performance.</p>
+          <p class="lang-ru">Связываю приоритеты обучения с запусками, запросами полей и ежедневными задачами коммерческой команды вместе с руководителями продаж.</p>
+        </div>
+        <div class="ownership-item">
+          <h3><span class="lang-en">Coordinate expertise</span><span class="lang-ru">Координация экспертизы</span></h3>
+          <p class="lang-en">Bring internal SMEs and external trainers into one workflow, with clear briefs, review points and launch ownership.</p>
+          <p class="lang-ru">Объединяю внутренних экспертов и внешних тренеров в одном процессе: бриф, точки проверки и ответственность за запуск.</p>
+        </div>
+        <div class="ownership-item">
+          <h3><span class="lang-en">Build repeatable systems</span><span class="lang-ru">Систематизация</span></h3>
+          <p class="lang-en">Set priorities, manage the learning lifecycle, standardise materials and turn successful solutions into reusable formats.</p>
+          <p class="lang-ru">Определяю приоритеты, веду жизненный цикл обучения, стандартизирую материалы и превращаю рабочие решения в повторяемые форматы.</p>
+        </div>
+        <div class="ownership-item">
+          <h3><span class="lang-en">Scale through initiative</span><span class="lang-ru">Масштабирование инициатив</span></h3>
+          <p class="lang-en">Launch improvements without waiting for a formal brief, influence adjacent teams and hand over processes so they keep working.</p>
+          <p class="lang-ru">Запускаю улучшения без формального поручения, влияю на смежные команды и передаю процессы так, чтобы они продолжали работать.</p>
         </div>
       </div>
     </div>
@@ -864,8 +896,8 @@
 
 <script>
   // ---------- Language switch ----------
-  const TITLE_EN = "Mariia Sokolova · Online Course Creator & Instructional Designer";
-  const TITLE_RU = "Мария Соколова · Создатель онлайн-курсов и инструкционный дизайнер";
+  const TITLE_EN = "Mariia Sokolova · L&D Specialist & Instructional Designer";
+  const TITLE_RU = "Мария Соколова · Специалист по L&D и инструкционный дизайнер";
 
   function getUrlLang(){
     const v = new URLSearchParams(window.location.search).get('lang');
